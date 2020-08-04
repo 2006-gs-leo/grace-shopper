@@ -1,4 +1,4 @@
-# INSERTNAMEHERE
+# Race Shopper
 
 Insert app idea here
 _This document describes our team social contract for this project_
