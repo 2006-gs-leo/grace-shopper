@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
+import {Link} from 'react-router-dom'
 
 /**
  * COMPONENT
@@ -10,26 +11,37 @@ const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor="email">
-            <small>Email</small>
-          </label>
-          <input name="email" type="text" />
+    <div className="authFormWhole">
+      <form className="form-signin" onSubmit={handleSubmit} name={name}>
+        <div className="emailForm">
+          <img src="JDBCARS_LOGO.png" alt="" />
+          <h3 className="h3 mb-3 font-weight-normal">Please sign in</h3>
+          <p>
+            Don't have a JDB account? &nbsp;
+            <small>
+              <span>
+                Create one here
+                <Link to="/signup"> join the JDB family!</Link>
+              </span>
+            </small>
+          </p>
         </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
+        <div className="emailForm">
+          <label className="form-signin" htmlFor="email" />
+          <input placeholder="Email address" name="email" type="text" />
+          <label className="form-signin" htmlFor="password" />
+          <input placeholder="Password" name="password" type="password" />
         </div>
-        <div>
+        <div className="emailForm">
           <button type="submit">{displayName}</button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
+        <div className="emailForm">
+          <button type="submit">
+            <a href="/auth/google">{displayName} with Google</a>
+          </button>
+        </div>
       </form>
-      <a href="/auth/google">{displayName} with Google</a>
     </div>
   )
 }
