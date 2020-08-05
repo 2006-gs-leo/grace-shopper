@@ -12,7 +12,7 @@ const Order = require('./order')
  */
 
 //Many To Many - Cars/Orders
-const CarsAndOrders = db.define('CarsAndOrders', {
+const CarsAndOrders = db.define('carsAndOrders', {
   carId: {
     type: Sequelize.INTEGER,
     references: {
