@@ -37,27 +37,96 @@ const Car = db.define('car', {
       notEmpty: true
     }
   },
-  zipCode: {
-    type: Sequelize.INTEGER,
+  cylinderCount: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      isIn: [
+        [
+          'all',
+          '4-cylinder',
+          '5-cylinder',
+          '6-cylinder, 8-cylinder',
+          '10-cylinder',
+          '12-cylinder'
+        ]
+      ]
+    }
+  },
+  mpg: {
+    type: Sequelize.DOUBLE,
     allowNull: false,
     validate: {
       notEmpty: true
     }
   },
-  startDate: {
-    type: Sequelize.DATE,
+  exteriorColor: {
+    type: Sequelize.STRING,
     allowNull: false,
     validate: {
       notEmpty: true,
-      isDate: true
+      isIn: [
+        [
+          'Beige',
+          'Black',
+          'Blue',
+          'Brown',
+          'Gold',
+          'Gray',
+          'Green',
+          'Orange',
+          'Pink',
+          'Purple',
+          'Red',
+          'Silver',
+          'White',
+          'Yellow',
+          'Other'
+        ]
+      ]
     }
   },
-  endDate: {
-    type: Sequelize.DATE,
+  interiorColor: {
+    type: Sequelize.STRING,
     allowNull: false,
     validate: {
       notEmpty: true,
-      isDate: true
+      isIn: [
+        [
+          'Beige',
+          'Black',
+          'Blue',
+          'Brown',
+          'Gold',
+          'Gray',
+          'Green',
+          'Orange',
+          'Pink',
+          'Purple',
+          'Red',
+          'Silver',
+          'White',
+          'Yellow',
+          'Other'
+        ]
+      ]
+    }
+  },
+  transmission: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      isIn: [['manual', 'automatic']]
+    }
+  },
+  drivetrain: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      isIn: [['awd', 'rwd', 'fwd', '4wd']]
     }
   },
   quantity: {
