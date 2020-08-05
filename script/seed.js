@@ -2,55 +2,22 @@
 
 const db = require('../server/db')
 const {User} = require('../server/db/models')
+const faker = require('faker')
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
-  const users = await Promise.all([
-    User.create({
-      firstName: 'Bobby',
-      lastName: 'Ton',
-      email: 'bobby.ton@gmail.com'
-    }),
-    User.create({
-      firstName: 'Jake',
-      lastName: 'Armijo',
-      email: 'jake.armijo@gmail.com'
-    }),
-    User.create({
-      firstName: 'Dean',
-      lastName: 'Gladish',
-      email: 'dean.gladish@email.com'
-    }),
-    User.create({
-      firstName: 'Travis',
-      lastName: 'Stratton',
-      email: 'travis.stratton@email.com'
-    }),
-    User.create({
-      firstName: 'Jonah',
-      lastName: 'Ullman',
-      email: 'jonah.ullman@email.com'
-    }),
-    User.create({
-      firstName: 'Claire',
-      lastName: 'Muscat',
-      email: 'claire.muscat@email.com'
-    }),
-    User.create({
-      firstName: 'Finn',
-      lastName: 'Terdal',
-      email: 'finn.terdal@email.com'
-    }),
-    User.create({
-      firstName: 'Priti',
-      lastName: 'Patel',
-      email: 'priti.patel@email.com'
+  for (let i = 0; i < 100; i++) {
+    await User.create({
+      firstName: faker.name.firstName(),
+      lastName: faker.name.lastName(),
+      email: faker.internet.email(),
+      image: faker.image.imageUrl()
     })
-  ])
+  }
 
-  console.log(`seeded ${users.length} users`)
+  console.log(`seeded 100 users`)
   console.log(`seeded successfully`)
 }
 
