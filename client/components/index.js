@@ -6,4 +6,5 @@
 export {default as Navbar} from './navbar'
 export {default as UserHome} from './user-home'
 export {default as MainPage} from './MainPage'
+export {default as SingleCarView} from './SingleCarView'
 export {Login, Signup} from './auth-form'
