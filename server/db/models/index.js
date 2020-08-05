@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize')
-const db = require('../db')
 const User = require('./user')
 const Car = require('./car')
 const Order = require('./order')
+const CarsAndOrders = require('./carsAndOrders')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -12,27 +12,6 @@ const Order = require('./order')
  */
 
 //Many To Many - Cars/Orders
-const CarsAndOrders = db.define('carsAndOrders', {
-  carId: {
-    type: Sequelize.INTEGER,
-    references: {
-      model: Car,
-      key: 'id'
-    }
-  },
-  orderId: {
-    type: Sequelize.INTEGER,
-    references: {
-      model: Order, // 'Actors' would also work
-      key: 'id'
-    }
-  },
-  quantity: {
-    type: Sequelize.INTEGER,
-    defaultValue: 1
-  }
-})
-
 Car.belongsToMany(Order, {through: CarsAndOrders})
 Order.belongsToMany(Car, {through: CarsAndOrders})
 
@@ -47,5 +26,8 @@ Order.belongsTo(User)
  * instead of: const User = require('../db/models/user')
  */
 module.exports = {
-  User
+  User,
+  Car,
+  Order,
+  CarsAndOrders
 }
