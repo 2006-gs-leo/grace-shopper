@@ -47,7 +47,8 @@ const Car = db.define('car', {
           'all',
           '4-cylinder',
           '5-cylinder',
-          '6-cylinder, 8-cylinder',
+          '6-cylinder',
+          '8-cylinder',
           '10-cylinder',
           '12-cylinder'
         ]
