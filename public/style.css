@@ -29,10 +29,12 @@ form div {
   line-height: 24px;
   text-size-adjust: 100%;
   background-color: #3c6e71;
+  text-decoration-color: #ffffff;
 }
 
 .right-side-nav {
   float: right;
+  padding-top: 1rem;
 }
 
 .navbarHeaderBanner {
@@ -45,9 +47,13 @@ form div {
 }
 .navbarHeaderInfo {
   display: flex;
+  justify-content: flex-end;
   background-color: #d9d9d9;
-  flex-direction: row-reverse;
   height: 2em;
+}
+
+.AnchnavbarHeaderInfo {
+  display: flex;
 }
 .Covid19Banner {
   flex-direction: column;
@@ -59,7 +65,7 @@ form div {
   flex-direction: column;
   align-content: center;
   flex-wrap: wrap;
-  /* align-content: center; */
+  align-content: center;
 }
 
 .emailForm {
@@ -70,7 +76,6 @@ form div {
 
 .form-signin {
   background-color: #ffffff;
-  width: 100%;
   max-width: 330px;
   padding: 15px;
   margin: auto;

@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
+import {Link} from 'react-router-dom'
 
 /**
  * COMPONENT
@@ -13,17 +14,22 @@ const AuthForm = props => {
     <div className="authFormWhole">
       <form className="form-signin" onSubmit={handleSubmit} name={name}>
         <div className="emailForm">
-          <img src="JDGCARS_LOGO.png" alt="" width="72" height="72" />
+          <img src="JDGCARS_LOGO.png" alt="" />
           <h3 className="h3 mb-3 font-weight-normal">Please sign in</h3>
           <p>
             Don't have a JDG account? &nbsp;
-            <span>Create one here</span>
+            <small>
+              <span>
+                Create one here
+                <Link to="/signup"> join the JDG family!</Link>
+              </span>
+            </small>
           </p>
-          <label className="emailForm" htmlFor="email" />
-          <input placeholder="Email address" name="email" type="text" />
         </div>
         <div className="emailForm">
-          <label className="emailForm" htmlFor="password" />
+          <label className="form-signin" htmlFor="email" />
+          <input placeholder="Email address" name="email" type="text" />
+          <label className="form-signin" htmlFor="password" />
           <input placeholder="Password" name="password" type="password" />
         </div>
         <div className="emailForm">

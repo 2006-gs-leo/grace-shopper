@@ -18,7 +18,10 @@ The requirements below are broken into separate **tiers**
 ### logged-in customer
 
 * [ ] have a persistent cart so that a user can revisit and pick up where they left off.
-* [ ] Logged-in-user across multiple devices: - [ ] If logged in on their mobile device and add some items to their cart. When they open the browser on their laptop and log in, they should see those items in their cart.
+* [ ] Logged-in-user across multiple devices:
+
+- [ ] If logged in on their mobile device and add some items to their cart. When they open the browser on their laptop and log in, they should see those items in their cart.
+
 * [ ] No one else should be able to edit a user's cart except a user
 
 ### Adminisstrator Role

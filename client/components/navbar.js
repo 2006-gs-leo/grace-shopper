@@ -19,13 +19,13 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       </a>
     </div>
     <div className="navbarHeaderInfo">
-      <Link className="right-side-nav" to="/howitworks">
+      <Link className="AnchnavbarHeaderInfo" to="/howitworks">
         How it Works?
       </Link>
-      <Link className="right-side-nav" to="/aboutus">
+      <Link className="AnchnavbarHeaderInfo" to="/aboutus">
         About JDG
       </Link>
-      <Link className="right-side-nav" to="/support">
+      <Link className="AnchnavbarHeaderInfo" to="/support">
         Support & Contact
       </Link>
     </div>
@@ -48,14 +48,14 @@ const Navbar = ({handleClick, isLoggedIn}) => (
             <Link to="/sell-trade">SELL/TRADE</Link>
             <Link to="/carfinder">CAR FINDER</Link>
             <Link className="right-side-nav" to="/login">
-              Cart
+              CART
             </Link>
             <i className="fas fa-shopping-cart" />
             <Link className="right-side-nav" to="/login">
-              Login
+              LOGIN
             </Link>
             <Link className="right-side-nav" to="/signup">
-              Sign Up
+              SIGN UP
             </Link>
           </div>
         )}
