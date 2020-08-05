@@ -31,11 +31,10 @@ const Car = db.define('car', {
     }
   },
   price: {
-    type: Sequelize.FLOAT,
+    type: Sequelize.INTEGER,
     allowNull: false,
     validate: {
-      notEmpty: true,
-      isFloat: true
+      notEmpty: true
     }
   },
   zipCode: {
