@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const Car = db.define('Car', {
+const Car = db.define('car', {
   make: {
     type: Sequelize.STRING,
     allowNull: false,
