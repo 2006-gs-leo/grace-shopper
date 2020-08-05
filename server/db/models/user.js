@@ -24,7 +24,7 @@ const User = db.define('user', {
       isEmail: true
     }
   },
-  image: Sequelize.STRING
+  image: {type: Sequelize.STRING, defaultValue: ''}
 })
 
 module.exports = User
