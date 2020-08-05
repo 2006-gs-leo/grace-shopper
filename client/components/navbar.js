@@ -34,7 +34,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         {isLoggedIn ? (
           <div className="navbar">
             {/* The navbar will show these links after you log in */}
-            <img className="logo" src="JDGCARS_LOGO.png" />
+            <img className="logo" src="JDBCARS_LOGO.png" />
             <Link to="/home">Home</Link>
             <a href="#" onClick={handleClick}>
               Logout
@@ -43,7 +43,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         ) : (
           <div className="navbar">
             {/* The navbar will show these links before you log in */}
-            <img className="logo" src="JDGCARS_LOGO.png" />
+            <img className="logo" src="JDBCARS_LOGO.png" />
             <Link to="/searchcars">SEARCH CARS</Link>
             <Link to="/sell-trade">SELL/TRADE</Link>
             <Link to="/carfinder">CAR FINDER</Link>

@@ -14,14 +14,14 @@ const AuthForm = props => {
     <div className="authFormWhole">
       <form className="form-signin" onSubmit={handleSubmit} name={name}>
         <div className="emailForm">
-          <img src="JDGCARS_LOGO.png" alt="" />
+          <img src="JDBCARS_LOGO.png" alt="" />
           <h3 className="h3 mb-3 font-weight-normal">Please sign in</h3>
           <p>
-            Don't have a JDG account? &nbsp;
+            Don't have a JDB account? &nbsp;
             <small>
               <span>
                 Create one here
-                <Link to="/signup"> join the JDG family!</Link>
+                <Link to="/signup"> join the JDB family!</Link>
               </span>
             </small>
           </p>
@@ -37,7 +37,7 @@ const AuthForm = props => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
         <div className="emailForm">
-          <button>
+          <button type="submit">
             <a href="/auth/google">{displayName} with Google</a>
           </button>
         </div>
