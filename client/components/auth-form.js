@@ -10,17 +10,15 @@ const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
-    <div>
+    <div className="authFormWhole">
       <form className="form-signin" onSubmit={handleSubmit} name={name}>
         <div className="emailForm">
-          <img
-            className="mb-4"
-            src="JDGCARS_LOGO.png"
-            alt=""
-            width="72"
-            height="72"
-          />
+          <img src="JDGCARS_LOGO.png" alt="" width="72" height="72" />
           <h3 className="h3 mb-3 font-weight-normal">Please sign in</h3>
+          <p>
+            Don't have a JDG account? &nbsp;
+            <span>Create one here</span>
+          </p>
           <label className="emailForm" htmlFor="email" />
           <input placeholder="Email address" name="email" type="text" />
         </div>
@@ -32,8 +30,10 @@ const AuthForm = props => {
           <button type="submit">{displayName}</button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
-        <div className="form-signin">
-          <a href="/auth/google">{displayName} with Google</a>
+        <div className="emailForm">
+          <button>
+            <a href="/auth/google">{displayName} with Google</a>
+          </button>
         </div>
       </form>
     </div>

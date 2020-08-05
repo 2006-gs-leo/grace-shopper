@@ -5,34 +5,63 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <div className="navbar">
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <img className="logo" src="JDGCARS_LOGO.png" />
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <img className="logo" src="JDGCARS_LOGO.png" />
-          <Link to="/searchcars">SEARCH CARS</Link>
-          <Link to="/sell-trade">SELL/TRADE</Link>
-          <Link to="/carfinder">CAR FINDER</Link>
-          <Link className="right-side-nav" to="/login">
-            Login
-          </Link>
-          <Link className="right-side-nav" to="/signup">
-            Sign Up
-          </Link>
-        </div>
-      )}
-    </nav>
-    <hr />
+  <div>
+    <div className="navbarHeaderBanner">
+      <img
+        className="Covid19Banner"
+        src="https://assets.fastly.carvana.io/about-assets/exclamation-icon.png"
+      />
+      <span className="Covid19Banner">COVID-19 information</span>
+      &nbsp;Touchless delivery/pickup is currently underway in your area.
+      <a data-qa="link" href="/touchless-delivery" className="Covid19Banner">
+        {' '}
+        Learn more
+      </a>
+    </div>
+    <div className="navbarHeaderInfo">
+      <Link className="right-side-nav" to="/howitworks">
+        How it Works?
+      </Link>
+      <Link className="right-side-nav" to="/aboutus">
+        About JDG
+      </Link>
+      <Link className="right-side-nav" to="/support">
+        Support & Contact
+      </Link>
+    </div>
+    <div className="navbar">
+      <nav>
+        {isLoggedIn ? (
+          <div className="navbar">
+            {/* The navbar will show these links after you log in */}
+            <img className="logo" src="JDGCARS_LOGO.png" />
+            <Link to="/home">Home</Link>
+            <a href="#" onClick={handleClick}>
+              Logout
+            </a>
+          </div>
+        ) : (
+          <div className="navbar">
+            {/* The navbar will show these links before you log in */}
+            <img className="logo" src="JDGCARS_LOGO.png" />
+            <Link to="/searchcars">SEARCH CARS</Link>
+            <Link to="/sell-trade">SELL/TRADE</Link>
+            <Link to="/carfinder">CAR FINDER</Link>
+            <Link className="right-side-nav" to="/login">
+              Cart
+            </Link>
+            <i className="fas fa-shopping-cart" />
+            <Link className="right-side-nav" to="/login">
+              Login
+            </Link>
+            <Link className="right-side-nav" to="/signup">
+              Sign Up
+            </Link>
+          </div>
+        )}
+      </nav>
+      <hr />
+    </div>
   </div>
 )
 
