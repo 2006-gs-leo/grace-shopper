@@ -44,7 +44,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <div className="navbar">
             {/* The navbar will show these links before you log in */}
             <img className="logo" src="JDBCARS_LOGO.png" />
-            <Link to="/searchcars">SEARCH CARS</Link>
+            <Link to="/MainPage">SEARCH CARS</Link>
             <Link to="/sell-trade">SELL/TRADE</Link>
             <Link to="/carfinder">CAR FINDER</Link>
             <Link className="right-side-nav" to="/cart">

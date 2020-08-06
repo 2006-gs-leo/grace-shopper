@@ -31,34 +31,103 @@ const Car = db.define('car', {
     }
   },
   price: {
-    type: Sequelize.FLOAT,
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-      isFloat: true
-    }
-  },
-  zipCode: {
     type: Sequelize.INTEGER,
     allowNull: false,
     validate: {
       notEmpty: true
     }
   },
-  startDate: {
-    type: Sequelize.DATE,
+  cylinderCount: {
+    type: Sequelize.STRING,
     allowNull: false,
     validate: {
       notEmpty: true,
-      isDate: true
+      isIn: [
+        [
+          'all',
+          '4-cylinder',
+          '5-cylinder',
+          '6-cylinder',
+          '8-cylinder',
+          '10-cylinder',
+          '12-cylinder'
+        ]
+      ]
     }
   },
-  endDate: {
-    type: Sequelize.DATE,
+  mpg: {
+    type: Sequelize.DOUBLE,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  exteriorColor: {
+    type: Sequelize.STRING,
     allowNull: false,
     validate: {
       notEmpty: true,
-      isDate: true
+      isIn: [
+        [
+          'Beige',
+          'Black',
+          'Blue',
+          'Brown',
+          'Gold',
+          'Gray',
+          'Green',
+          'Orange',
+          'Pink',
+          'Purple',
+          'Red',
+          'Silver',
+          'White',
+          'Yellow',
+          'Other'
+        ]
+      ]
+    }
+  },
+  interiorColor: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      isIn: [
+        [
+          'Beige',
+          'Black',
+          'Blue',
+          'Brown',
+          'Gold',
+          'Gray',
+          'Green',
+          'Orange',
+          'Pink',
+          'Purple',
+          'Red',
+          'Silver',
+          'White',
+          'Yellow',
+          'Other'
+        ]
+      ]
+    }
+  },
+  transmission: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      isIn: [['manual', 'automatic']]
+    }
+  },
+  drivetrain: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      isIn: [['awd', 'rwd', 'fwd', '4wd']]
     }
   },
   quantity: {
