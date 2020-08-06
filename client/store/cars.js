@@ -4,7 +4,7 @@ import axios from 'axios'
  * ACTION TYPES
  */
 
-const SET_USERS = 'SET_USERS'
+const SET_CARS = 'SET_CARS'
 
 /**
  * INITIAL STATE
@@ -16,10 +16,10 @@ const initialState = {}
  * ACTION CREATORS
  */
 
-export const setUsers = users => {
+export const setCars = cars => {
   return {
-    type: SET_USERS,
-    users
+    type: SET_CARS,
+    cars
   }
 }
 
@@ -27,22 +27,22 @@ export const setUsers = users => {
  * THUNK CREATORS
  */
 
-export const fetchUsers = () => {
+export const fetchCars = () => {
   return async dispatch => {
     try {
       const {data} = await axios.get('/api/cars')
 
-      dispatch(setUsers(data))
+      dispatch(setCars(data))
     } catch (err) {
       console.log(err)
     }
   }
 }
 
-export default function usersReducer(state = initialState, action) {
+export default function carsReducer(state = initialState, action) {
   switch (action.type) {
-    case SET_USERS:
-      return action.users
+    case SET_CARS:
+      return action.cars
     default:
       return state
   }

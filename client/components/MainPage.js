@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
+import {fetchCars} from '../store/cars'
 
 export class MainPage extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ export class MainPage extends React.Component {
   }
 
   componentDidMount() {
+    this.props.fetchCars()
     console.log('The main page component is mounted!')
   }
 
@@ -19,6 +21,9 @@ export class MainPage extends React.Component {
   }
 
   render() {
+    const cars = this.props.cars
+    console.log(cars)
+
     return (
       <div>
         <br />
@@ -34,19 +39,27 @@ export class MainPage extends React.Component {
         <input className="mainInput" type="text" placeholder="Search.." />
 
         <div id="appDiv" className="flex-container-main">
-          {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(i => {
-            return (
-              <div key={i} id={i} onClick={event => this.handleClick(event)}>
-                <img
-                  key={i}
-                  id={i}
-                  className="imgMain"
-                  src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-                />
-              </div>
-            )
-          })}
+          {cars.length > 0 ? (
+            cars.map(car => {
+              return (
+                <div key={car.id} onClick={event => this.handleClick(event)}>
+                  <img
+                    className="imgMain"
+                    src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
+                  />
+                  <p>
+                    {car.vehicleYear} {car.make} {car.model}
+                  </p>
+                  <p>${car.price}</p>
+                  <p>Quantity: {car.quantity}</p>
+                </div>
+              )
+            })
+          ) : (
+            <h1>No Cars Available</h1>
+          )}
         </div>
+
         <div id="footer">
           <Link to="/about" className="footer">
             About Us
@@ -61,4 +74,16 @@ export class MainPage extends React.Component {
   }
 }
 
-export default connect(null, null)(MainPage)
+const mapState = reduxState => {
+  return {
+    cars: reduxState.cars
+  }
+}
+
+const mapDispatch = dispatch => {
+  return {
+    fetchCars: () => dispatch(fetchCars())
+  }
+}
+
+export default connect(mapState, mapDispatch)(MainPage)
