@@ -22,4 +22,14 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
+router.delete('/:id', async (req, res, next) => {
+  try {
+    await Car.destroy({
+      where: {id: req.params.id}
+    })
+  } catch (err) {
+    next(err)
+  }
+})
+
 module.exports = router
