@@ -27,6 +27,10 @@ const AuthForm = props => {
           </p>
         </div>
         <div className="emailForm">
+          <label className="form-signin" htmlFor="firstName" />
+          <input placeholder="First Name" name="firstName" type="text" />
+          <label className="form-signin" htmlFor="lastName" />
+          <input placeholder="Last Name" name="lastName" type="text" />
           <label className="form-signin" htmlFor="email" />
           <input placeholder="Email address" name="email" type="text" />
           <label className="form-signin" htmlFor="password" />
