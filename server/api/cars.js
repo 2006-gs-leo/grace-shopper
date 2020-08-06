@@ -2,6 +2,12 @@ const router = require('express').Router()
 const {Car} = require('../db/models')
 const {route} = require('../auth')
 
+// const adminsOnly = () => {
+//   if(!req.user.isAdmin){
+
+//   }
+// }
+
 router.get('/', async (req, res, next) => {
   try {
     const cars = await Car.findAll()
@@ -27,6 +33,19 @@ router.delete('/:id', async (req, res, next) => {
     await Car.destroy({
       where: {id: req.params.id}
     })
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.put('/:id', async (req, res, next) => {
+  try {
+    const [numAffected, affectedRows] = await Car.update(req.body, {
+      where: {id: req.params.id},
+      returning: true
+    })
+
+    res.json(affectedRows)
   } catch (err) {
     next(err)
   }
