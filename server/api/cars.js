@@ -1,12 +1,5 @@
 const router = require('express').Router()
 const {Car} = require('../db/models')
-const {route} = require('../auth')
-
-// const adminsOnly = () => {
-//   if(!req.user.isAdmin){
-
-//   }
-// }
 
 router.get('/', async (req, res, next) => {
   try {
