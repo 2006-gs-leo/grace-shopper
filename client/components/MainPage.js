@@ -42,7 +42,11 @@ export class MainPage extends React.Component {
           {cars.length > 0 ? (
             cars.map(car => {
               return (
-                <div key={car.id} onClick={event => this.handleClick(event)}>
+                <div
+                  key={car.id}
+                  id={car.id}
+                  onClick={event => this.handleClick(event)}
+                >
                   <img
                     className="imgMain"
                     src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
