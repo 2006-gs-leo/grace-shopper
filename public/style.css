@@ -149,6 +149,7 @@ form div {
 
 .itemsDiv {
   flex-direction: column;
+  width: 350px;
   border-color: black;
   border-width: 0.1em;
   border-style: groove;
