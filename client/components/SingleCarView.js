@@ -164,21 +164,23 @@ export class SingleCarView extends React.Component {
             this.div = div
           }}
         >
-          <div className="singleViewDescriptionPrice">
-            <div>
-              <b>Description:</b>
+          <div>
+            <div className="singleViewDescriptionPrice">
+              <div>
+                <b>Description:</b>
+                <br />
+                {`${this.props.cars.SingleCar.description}`}
+              </div>
+              <div>
+                <b>Price:</b>
+                <br />
+                -{`${this.props.cars.SingleCar.price}`}-
+              </div>
               <br />
-              {`${this.props.cars.SingleCar.description}`}
+              <button id="addToCartButton" type="button">
+                Add to Cart
+              </button>
             </div>
-            <div>
-              <b>Price:</b>
-              <br />
-              -{`${this.props.cars.SingleCar.price}`}-
-            </div>
-            <br />
-            <button id="addToCartButton" type="button">
-              Add to Cart
-            </button>
           </div>
           <div className="highlightsTitle">Highlights</div>
           <div className="singleViewHighlights">
@@ -210,8 +212,12 @@ export class SingleCarView extends React.Component {
           </div>
         </div>
         <div className="editForm">
-          <button type="button" onClick={this.showEditForm}>
-            Edit Car
+          <button
+            type="button"
+            className="editCarButton"
+            onClick={this.showEditForm}
+          >
+            EDIT CAR
           </button>
           {this.state.showForm ? (
             <EditCar

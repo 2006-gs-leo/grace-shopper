@@ -1,7 +1,9 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {submitSingleCarData} from '../store/SingleCar'
 
-export default class EditCar extends React.Component {
+export class AddCar extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -19,9 +21,18 @@ export default class EditCar extends React.Component {
       transmission: '',
       vehicleYear: null
     }
+    this.mapInputToState = this.mapInputToState.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
-  componentDidMount() {
-    console.log(this.props)
+
+  componentDidMount() {}
+
+  mapInputToState(e) {
+    this.setState({[e.target.name]: e.target.value})
+  }
+
+  handleSubmit(e) {
+    e.preventDefault()
     const {
       cylinderCount,
       description,
@@ -36,8 +47,8 @@ export default class EditCar extends React.Component {
       quantity,
       transmission,
       vehicleYear
-    } = this.props
-    this.setState({
+    } = this.state
+    this.props.submitCar({
       cylinderCount,
       description,
       drivetrain,
@@ -53,8 +64,9 @@ export default class EditCar extends React.Component {
       vehicleYear
     })
   }
+
   render() {
-    const {
+    let {
       cylinderCount,
       description,
       drivetrain,
@@ -68,10 +80,10 @@ export default class EditCar extends React.Component {
       quantity,
       transmission,
       vehicleYear
-    } = this.props
+    } = this.state
     return (
       <div className=".addForm">
-        <form onSubmit={this.props.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <label htmlFor="cylinderCount">
             {![
               'all',
@@ -91,19 +103,11 @@ export default class EditCar extends React.Component {
             )}
             Cylinder Count:
           </label>
-          <input
-            name="cylinderCount"
-            value={cylinderCount}
-            onChange={this.props.mapInputToState}
-          />
+          <input name="cylinderCount" onChange={this.mapInputToState} />
           <br />
 
           <label htmlFor="description">Description: </label>
-          <textarea
-            name="description"
-            value={description}
-            onChange={this.props.mapInputToState}
-          />
+          <textarea name="description" onChange={this.mapInputToState} />
           <br />
 
           <label htmlFor="drivetrain">
@@ -116,11 +120,7 @@ export default class EditCar extends React.Component {
             )}
             Drive Train:
           </label>
-          <input
-            name="drivetrain"
-            value={drivetrain}
-            onChange={this.props.mapInputToState}
-          />
+          <input name="drivetrain" onChange={this.mapInputToState} />
           <br />
 
           <label htmlFor="exteriorColor">
@@ -150,14 +150,10 @@ export default class EditCar extends React.Component {
             )}
             Exterior Color:
           </label>
-          <input
-            name="exteriorColor"
-            value={exteriorColor}
-            onChange={this.props.mapInputToState}
-          />
+          <input name="exteriorColor" onChange={this.mapInputToState} />
           <br />
           <label htmlFor="id">Car ID: </label>
-          <input name="id" value={id} onChange={this.props.mapInputToState} />
+          <input name="id" onChange={this.mapInputToState} />
           <br />
           <label htmlFor="interiorColor">
             {![
@@ -186,35 +182,19 @@ export default class EditCar extends React.Component {
             )}
             Interior Color:
           </label>
-          <input
-            name="interiorColor"
-            value={interiorColor}
-            onChange={this.props.mapInputToState}
-          />
+          <input name="interiorColor" onChange={this.mapInputToState} />
           <br />
           <label htmlFor="make">Make: </label>
-          <input
-            name="make"
-            value={make}
-            onChange={this.props.mapInputToState}
-          />
+          <input name="make" onChange={this.mapInputToState} />
           <br />
           <label htmlFor="model">Model: </label>
-          <input
-            name="model"
-            value={model}
-            onChange={this.props.mapInputToState}
-          />
+          <input name="model" onChange={this.mapInputToState} />
           <br />
           <label htmlFor="mpg">MPG: </label>
-          <input name="mpg" value={mpg} onChange={this.props.mapInputToState} />
+          <input name="mpg" onChange={this.mapInputToState} />
           <br />
           <label htmlFor="price">Price: </label>
-          <input
-            name="price"
-            value={price}
-            onChange={this.props.mapInputToState}
-          />
+          <input name="price" onChange={this.mapInputToState} />
           <br />
           <label htmlFor="quantity">
             {quantity < 1 ? (
@@ -224,11 +204,7 @@ export default class EditCar extends React.Component {
             )}
             Quantity:
           </label>
-          <input
-            name="quantity"
-            value={quantity}
-            onChange={this.props.mapInputToState}
-          />
+          <input name="quantity" onChange={this.mapInputToState} />
           <br />
           <label htmlFor="transmission">
             {!['manual', 'automatic'].includes(transmission) ? (
@@ -240,21 +216,13 @@ export default class EditCar extends React.Component {
             )}
             Transmission:
           </label>
-          <input
-            name="transmission"
-            value={transmission}
-            onChange={this.props.mapInputToState}
-          />
+          <input name="transmission" onChange={this.mapInputToState} />
           <br />
           <label htmlFor="vehicleYear">Vehicle Year: </label>
-          <input
-            name="vehicleYear"
-            value={vehicleYear}
-            onChange={this.props.mapInputToState}
-          />
+          <input name="vehicleYear" onChange={this.mapInputToState} />
           <br />
 
-          <button type="button" onClick={this.props.handleSubmit}>
+          <button type="button" onClick={this.handleSubmit}>
             Submit
           </button>
           <Link to="/add" className="addCarLink">
@@ -265,3 +233,13 @@ export default class EditCar extends React.Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    submitCar: data => {
+      dispatch(submitSingleCarData(data))
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(AddCar)

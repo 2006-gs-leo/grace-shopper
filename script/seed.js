@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, Car} = require('../server/db/models')
+const {User, Car, Order, CarsAndOrders} = require('../server/db/models')
 const faker = require('faker')
 
 async function seed() {
@@ -472,6 +472,34 @@ async function seed() {
       transmission: 'manual',
       drivetrain: 'awd',
       quantity: 4
+    })
+  ])
+
+  await Promise.all([
+    Order.create({
+      userId: 10,
+      id: 1,
+      fulfilled: true
+    }),
+    Order.create({
+      userId: 20,
+      id: 2,
+      fulfilled: true
+    })
+  ])
+
+  await Promise.all([
+    CarsAndOrders.create({
+      carId: 30,
+      orderId: 1,
+      quantity: 2,
+      price: 10000
+    }),
+    CarsAndOrders.create({
+      carId: 1,
+      orderId: 2,
+      quantity: 3,
+      price: 10510
     })
   ])
 
