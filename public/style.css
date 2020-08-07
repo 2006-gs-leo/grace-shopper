@@ -155,9 +155,13 @@ form div {
   border-style: groove;
 }
 
+.mainFootDiv {
+  background-color: #3c6e71;
+}
 .footerdiv {
   display: flex;
   background-color: #3c6e71;
+  height: 300px;
 }
 
 .site-footer {
@@ -219,18 +223,25 @@ form div {
 .BBClogo {
   width: 150px;
   height: 81px;
-  padding: 96px 0px 90px;
+  padding: 36px 0px 30px;
   float: right;
 }
 
 .bottombarinfo {
-  display: flex;
   flex-wrap: wrap;
   font-size: 12px;
   line-height: 22px;
   font-weight: 400;
   -webkit-box-pack: center;
   justify-content: center;
+}
+
+.socialmediaicon {
+  padding: 16px 0px 10px;
+}
+
+.botInfoAtags {
+  padding: 16px 0px 10px;
 }
 
 .singleViewNavbar {
