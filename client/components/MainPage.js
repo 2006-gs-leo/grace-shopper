@@ -17,7 +17,7 @@ export class MainPage extends React.Component {
 
   handleClick(e) {
     console.log(e.target.id)
-    this.props.history.push(`/SingleCarView/${e.target.id}`)
+    this.props.history.push(`/cars/${e.target.id}`)
   }
 
   render() {
