@@ -32,7 +32,7 @@ export const setCart = cart => ({
 //THUNKCREATORS
 export const fetchItems = () => async dispatch => {
   try {
-    const response = await axios.get('/api/users/orders/cart/')
+    const response = await axios.get('/api/users/:id/orders/cart/')
     const items = response.data
     const action = setCart(items)
     dispatch(action)
@@ -44,7 +44,7 @@ export const fetchItems = () => async dispatch => {
 export const addItem = item => async dispatch => {
   try {
     const {data: updatedCart} = await axios.put('/api/users/orders/cart', item)
-    dispatch(setItems(updatedCart))
+    dispatch(setCart(updatedCart))
   } catch (error) {
     console.log('ERROR IN ADD ITEM THUNK', error)
   }
@@ -56,7 +56,7 @@ export const deleteItem = itemId => async dispatch => {
       '/api/users/orders/cart',
       itemId
     )
-    dispatch(setItems(updatedCart))
+    dispatch(setCart(updatedCart))
   } catch (error) {
     console.log('ERROR IN DELETE ITEM THUNK', error)
   }
