@@ -27,7 +27,8 @@ export const editSingleCarData = (carId, edits) => {
     try {
       console.log('are we in the try block of the editsinglecardata thunk? ')
       console.log('the edits are, ', edits)
-      const response = await axios.put(`/api/cars/${6}`, edits)
+      console.log('the car id is, ', carId)
+      const response = await axios.put(`/api/cars/${carId}`, edits)
       console.log('did the axios put request succeed')
       const {data} = response
       dispatch(editSingleCar(data))
