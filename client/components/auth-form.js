@@ -50,7 +50,7 @@ class AuthForm extends Component {
             </p>
           </div>
           <div className="emailForm">
-            <label className="form-signin" htmlFor="firstName" />
+            {/* <label className="form-signin" htmlFor="firstName" />
             <input
               onChange={this.handleChange}
               placeholder="First Name"
@@ -64,7 +64,7 @@ class AuthForm extends Component {
               placeholder="Last Name"
               name="lastName"
               type="text"
-            />
+            /> */}
 
             <label className="form-signin" htmlFor="email" />
             <input

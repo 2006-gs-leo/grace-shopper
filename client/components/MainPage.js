@@ -7,11 +7,8 @@ export class MainPage extends React.Component {
     this.state = {}
     this.handleClick = this.handleClick.bind(this)
   }
-  componentDidMount() {
-    console.log('The main page component is mounted!')
-  }
+  componentDidMount() {}
   handleClick(e) {
-    console.log(e.target.id)
     this.props.history.push(`/SingleCarView/${e.target.id}`)
   }
   render() {

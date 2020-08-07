@@ -1,22 +1,23 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetchItems, addItem, deleteItem, updateItemThunk} from '../store/cart'
+import {fetchCart, addItem, deleteItem, updateItemThunk} from '../store/cart'
 import ProductMini from './ProductMini'
 
 export class Cart extends Component {
   constructor() {
     super()
     this.state = {
-      cart: 'Cart',
-      items: []
+      cart: 'CartItems',
+      amount: 0,
+      total: 0
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  // componentDidMount() {
-  //   this.props.getItems()
-  // }
+  componentDidMount() {
+    // this.props.getItems()
+  }
 
   handleChange(event) {
     this.setState({
@@ -124,28 +125,43 @@ export class Cart extends Component {
             </div>
           </div>
           <div className="itemsDiv">
-            <h1>ITEMS</h1>
-
-            <ul>
+            <header>
+              <h2>your cart</h2>
+            </header>
+            <article>
               {theFakeItems.map(item => {
                 return (
-                  <ProductMini
-                    item={item}
-                    deleteItem={this.props.deleteItem}
-                    updateQuantity={this.props.updateQuantity}
-                    key={item.id}
-                  />
+                  <div key={item.id}>
+                    <ProductMini
+                      item={item}
+                      deleteItem={this.props.deleteItem}
+                      updateQuantity={this.props.updateQuantity}
+                      key={item.id}
+                    />
+                  </div>
                 )
               })}
-            </ul>
+            </article>
           </div>
           <div className="logodiv">
             <img src="JDBCARS_LOGO.png" />
           </div>
         </div>
-        <div className="carttotal">
-          <h1>Total:</h1>
-        </div>
+        <footer>
+          <hr />
+          <div className="cart-total">
+            <h4>
+              total <span>$total</span>
+            </h4>
+          </div>
+          <button
+            className="btn clear-btn"
+            type="submit"
+            // onClick={() => dispatch({ type: CLEAR_CART })}
+          >
+            clear cart
+          </button>
+        </footer>
         <div>
           <button
             className="checkoutbtn"
@@ -169,7 +185,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getItems: () => dispatch(fetchItems()),
+    fetchCart: () => dispatch(fetchCart()),
     addItems: item => dispatch(addItem(item)),
     deleteItem: itemId => dispatch(deleteItem(itemId)),
     updateItemQty: (itemId, itemQty) =>

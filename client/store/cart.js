@@ -30,9 +30,9 @@ export const setCart = cart => ({
 // })
 
 //THUNKCREATORS
-export const fetchItems = () => async dispatch => {
+export const fetchCart = () => async dispatch => {
   try {
-    const response = await axios.get('/api/users/:id/orders/cart/')
+    const response = await axios.get('/api/users/orders/cart/')
     const items = response.data
     const action = setCart(items)
     dispatch(action)
