@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetchItems, addItem, deleteItem} from '../store/cart'
-import {Link} from 'react-router-dom'
+import {fetchItems, addItem, deleteItem, updateItemThunk} from '../store/cart'
+import ProductMini from './ProductMini'
 
 export class Cart extends Component {
   constructor() {
     super()
     this.state = {
-      name: 'Shopping Cart',
+      cart: 'Cart',
       items: []
     }
     this.handleChange = this.handleChange.bind(this)
@@ -44,49 +44,26 @@ export class Cart extends Component {
         make: 'Honda',
         model: 'Civic',
         vehicleYear: 1990,
-        description: 'A nice car for you',
-        price: '27,000',
-        cylinderCount: 6,
-        mpg: 32,
-        exteriorColor: 'black',
-        interiorColor: 'black',
-        transmission: 'automatic',
-        drivetrain: 'awd',
-        quantity: 0,
-        imageUrl: 'http://www.fillmurray.com/140/100'
+        price: '27,000'
       },
       {
         make: 'Honda',
         model: 'Civic',
         vehicleYear: 2000,
-        description: 'A nice car for you',
-        price: '27,000',
-        cylinderCount: 6,
-        mpg: 32,
-        exteriorColor: 'black',
-        interiorColor: 'black',
-        transmission: 'automatic',
-        drivetrain: 'awd',
-        quantity: 0,
-        imageUrl: 'http://www.fillmurray.com/140/100'
+        price: '27,000'
       },
       {
         make: 'Honda',
         model: 'Civic',
         vehicleYear: 2005,
-        description: 'A nice car for you',
-        price: '27,000',
-        cylinderCount: 6,
-        mpg: 32,
-        exteriorColor: 'black',
-        interiorColor: 'black',
-        transmission: 'automatic',
-        drivetrain: 'awd',
-        quantity: 0,
-        imageUrl: 'http://www.fillmurray.com/140/100'
+        price: '27,000'
       }
     ]
-    const items = this.props.items
+    // const {products} = this.props.cart
+    // let total = 0
+    // products.forEach((product) => {
+    //   total += product.price * product.productOrder.productQuantity
+    // })
     return (
       <div className="cartmaindiv">
         <div className="parentcart">
@@ -150,50 +127,16 @@ export class Cart extends Component {
             <h1>ITEMS</h1>
 
             <ul>
-              {theFakeItems.map(item => (
-                <div key={item.id} className="singleItemDiv">
-                  <h4>
-                    <Link className="itemMakeLink" to={`/items/${item.id}`}>
-                      <h5>Make: {item.make}</h5>
-                    </Link>
-                  </h4>
-                  <h4>Model: {item.model}</h4>
-                  <h4>Year: {item.vehicleYear}</h4>
-                  <h4>Description: {item.description}</h4>
-                  <h4>price: {item.price}</h4>
-                  <h4>Cylinders: {item.cylinderCount}</h4>
-                  <h4>MPG: {item.mpg}</h4>
-                  <h4>Color: {item.exteriorColor}</h4>
-                  <h4>Interior Color: {item.interiorColor}</h4>
-                  <h4>Transmission: {item.transmission}</h4>
-                  <h4>Drivetrain: {item.drivetrain}</h4>
-
-                  <div>
-                    <img className="itemImg" src={item.imageUrl} />
-                  </div>
-                  <button
-                    type="submit"
-                    className="remove"
-                    onClick={() => this.props.deleteItem(item.id)}
-                  >
-                    REMOVE
-                  </button>
-                  <button
-                    type="submit"
-                    className="remove"
-                    onClick={() => this.props.addItem(item)}
-                  >
-                    +
-                  </button>
-                  <button
-                    type="submit"
-                    className="remove"
-                    onClick={() => this.props.deleteItem(item.id)}
-                  >
-                    -
-                  </button>
-                </div>
-              ))}
+              {theFakeItems.map(item => {
+                return (
+                  <ProductMini
+                    item={item}
+                    deleteItem={this.props.deleteItem}
+                    updateQuantity={this.props.updateQuantity}
+                    key={item.id}
+                  />
+                )
+              })}
             </ul>
           </div>
           <div className="logodiv">
@@ -204,7 +147,11 @@ export class Cart extends Component {
           <h1>Total:</h1>
         </div>
         <div>
-          <button className="checkoutbtn" type="submit">
+          <button
+            className="checkoutbtn"
+            type="submit"
+            onClick={() => this.localStorageCheckout}
+          >
             checkout
           </button>
         </div>
@@ -213,9 +160,10 @@ export class Cart extends Component {
   }
 }
 
-const mapStateToProps = reduxState => {
+const mapStateToProps = state => {
   return {
-    items: reduxState.items
+    cart: state.cart,
+    user: state.user
   }
 }
 
@@ -223,7 +171,9 @@ const mapDispatchToProps = dispatch => {
   return {
     getItems: () => dispatch(fetchItems()),
     addItems: item => dispatch(addItem(item)),
-    deleteItem: itemId => dispatch(deleteItem(itemId))
+    deleteItem: itemId => dispatch(deleteItem(itemId)),
+    updateItemQty: (itemId, itemQty) =>
+      dispatch(updateItemThunk(itemId, itemQty))
   }
 }
 
