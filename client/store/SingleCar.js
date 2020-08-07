@@ -53,8 +53,7 @@ export default function(state = initialState, action) {
     case EDIT_SINGLE_CAR:
       return action.edits
     case ADD_NEW_CAR:
-      console.log('the add new car action is, ', action)
-      return action.data
+      return action.car
     default:
       return state
   }

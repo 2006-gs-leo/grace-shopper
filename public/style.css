@@ -473,4 +473,30 @@ form div {
 }
 
 .addCarForm {
+  border: inset;
+  border-radius: 1em;
+  border-width: 0.2em;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 1rem;
+  color: rgb(68, 68, 68);
+  background: rgba(255, 187, 0, 0.068);
+  cursor: pointer;
+  padding: 0.5em 1em;
+  width: 90%;
+  letter-spacing: 0.15em;
+  font-weight: bolder;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.addCarForm:hover {
+  -webkit-transform: rotateX(15deg);
+  -moz-transform: rotateX(15deg);
+  -ms-transform: rotateX(15deg);
+  transform: rotateX(15deg);
+}
+
+.addCarForm:focus {
+  outline: none;
 }

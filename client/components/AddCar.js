@@ -25,8 +25,6 @@ export class AddCar extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentDidMount() {}
-
   mapInputToState(e) {
     this.setState({[e.target.name]: e.target.value})
   }
@@ -68,21 +66,15 @@ export class AddCar extends React.Component {
   render() {
     let {
       cylinderCount,
-      description,
       drivetrain,
       exteriorColor,
-      id,
       interiorColor,
-      make,
-      model,
-      mpg,
-      price,
       quantity,
       transmission,
-      vehicleYear
+      mpg
     } = this.state
     return (
-      <div className=".addForm">
+      <div className="addCarForm">
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="cylinderCount">
             {![
@@ -152,9 +144,6 @@ export class AddCar extends React.Component {
           </label>
           <input name="exteriorColor" onChange={this.mapInputToState} />
           <br />
-          <label htmlFor="id">Car ID: </label>
-          <input name="id" onChange={this.mapInputToState} />
-          <br />
           <label htmlFor="interiorColor">
             {![
               'Beige',
@@ -190,7 +179,14 @@ export class AddCar extends React.Component {
           <label htmlFor="model">Model: </label>
           <input name="model" onChange={this.mapInputToState} />
           <br />
-          <label htmlFor="mpg">MPG: </label>
+          <label htmlFor="mpg">
+            {!(Number(mpg) == mpg) ? (
+              <span style={{color: 'red'}}>*needs to be an integer</span>
+            ) : (
+              <span />
+            )}
+            MPG:
+          </label>
           <input name="mpg" onChange={this.mapInputToState} />
           <br />
           <label htmlFor="price">Price: </label>
@@ -225,9 +221,6 @@ export class AddCar extends React.Component {
           <button type="button" onClick={this.handleSubmit}>
             Submit
           </button>
-          <Link to="/add" className="addCarLink">
-            Add a Car
-          </Link>
         </form>
       </div>
     )
