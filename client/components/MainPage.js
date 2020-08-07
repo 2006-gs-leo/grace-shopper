@@ -29,7 +29,7 @@ export class MainPage extends React.Component {
         <br />
         <br />
         <br />
-        <select name="cars" id="cars" className="select-css">
+        <select name="cars" className="select-css">
           <option value="Price">Price</option>
           <option value="Make">Make</option>
           <option value="Model">Model</option>
@@ -38,24 +38,28 @@ export class MainPage extends React.Component {
         </select>
         <input className="mainInput" type="text" placeholder="Search.." />
 
-        <div id="appDiv" className="flex-container-main">
+        <div className="carList">
           {cars.length > 0 ? (
             cars.map(car => {
               return (
                 <div
                   key={car.id}
-                  id={car.id}
-                  onClick={event => this.handleClick(event)}
+                  onClick={this.handleClick}
+                  className="carListItem"
                 >
-                  <img
-                    className="imgMain"
-                    src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-                  />
-                  <p>
-                    {car.vehicleYear} {car.make} {car.model}
-                  </p>
-                  <p>${car.price}</p>
-                  <p>Quantity: {car.quantity}</p>
+                  <div>
+                    <img
+                      className="carImg"
+                      src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
+                    />
+                  </div>
+                  <div>
+                    <p>
+                      {car.vehicleYear} {car.make} {car.model}
+                    </p>
+                    <p>${car.price}</p>
+                    <p>Quantity: {car.quantity}</p>
+                  </div>
                 </div>
               )
             })
