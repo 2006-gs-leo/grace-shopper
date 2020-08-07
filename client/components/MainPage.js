@@ -2,12 +2,13 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {fetchCars} from '../store/cars'
+import {NavLink} from 'react-router-dom'
+import {Nav} from 'react-bootstrap'
 
 export class MainPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {}
-    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
@@ -15,14 +16,8 @@ export class MainPage extends React.Component {
     console.log('The main page component is mounted!')
   }
 
-  handleClick(e) {
-    console.log(e.target.id)
-    this.props.history.push(`/cars/${e.target.id}`)
-  }
-
   render() {
     const cars = this.props.cars
-    console.log(cars)
 
     return (
       <div>
@@ -42,24 +37,22 @@ export class MainPage extends React.Component {
           {cars.length > 0 ? (
             cars.map(car => {
               return (
-                <div
-                  key={car.id}
-                  onClick={this.handleClick}
-                  className="carListItem"
-                >
-                  <div>
-                    <img
-                      className="carImg"
-                      src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-                    />
-                  </div>
-                  <div>
-                    <p>
-                      {car.vehicleYear} {car.make} {car.model}
-                    </p>
-                    <p>${car.price}</p>
-                    <p>Quantity: {car.quantity}</p>
-                  </div>
+                <div key={car.id} className="carListItem">
+                  <NavLink to={`/cars/${car.id}`}>
+                    <div>
+                      <img
+                        className="carImg"
+                        src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
+                      />
+                    </div>
+                    <div>
+                      <p>
+                        {car.vehicleYear} {car.make} {car.model}
+                      </p>
+                      <p>${car.price}</p>
+                      <p>Quantity: {car.quantity}</p>
+                    </div>
+                  </NavLink>
                 </div>
               )
             })
