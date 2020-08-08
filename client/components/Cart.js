@@ -1,13 +1,21 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetchCart, addItem, deleteItem, updateItemThunk} from '../store/cart'
-import ProductMini from './ProductMini'
+import {fetchCart, addItem, deleteItem, updateItemQty} from '../store/cart'
+import CartItem from './CartItem'
+import CartNavbar from './CartNavbar'
+import {object} from 'prop-types'
+
+let cartItems = []
+
+for (let element of Object.keys(localStorage)) {
+  cartItems.push(JSON.parse(localStorage.getItem(element)))
+}
 
 export class Cart extends Component {
   constructor() {
     super()
     this.state = {
-      cart: 'CartItems',
+      cart: cartItems,
       amount: 0,
       total: 0
     }
@@ -17,6 +25,9 @@ export class Cart extends Component {
 
   componentDidMount() {
     // this.props.getItems()
+    console.log('Cart Mounter state =', this.state)
+    console.log('Cart Mounter props = ', this.props)
+    console.log('Cart Mounter cart items = ', cartItems)
   }
 
   handleChange(event) {
@@ -40,26 +51,6 @@ export class Cart extends Component {
   }
 
   render() {
-    const theFakeItems = [
-      {
-        make: 'Honda',
-        model: 'Civic',
-        vehicleYear: 1990,
-        price: '27,000'
-      },
-      {
-        make: 'Honda',
-        model: 'Civic',
-        vehicleYear: 2000,
-        price: '27,000'
-      },
-      {
-        make: 'Honda',
-        model: 'Civic',
-        vehicleYear: 2005,
-        price: '27,000'
-      }
-    ]
     // const {products} = this.props.cart
     // let total = 0
     // products.forEach((product) => {
@@ -126,16 +117,16 @@ export class Cart extends Component {
           </div>
           <div className="itemsDiv">
             <header>
-              <h2>your cart</h2>
+              <CartNavbar deleteItem={deleteItem} />
             </header>
             <article>
-              {theFakeItems.map(item => {
+              {cartItems.map(item => {
                 return (
                   <div key={item.id}>
-                    <ProductMini
+                    <CartItem
                       item={item}
-                      deleteItem={this.props.deleteItem}
-                      updateQuantity={this.props.updateQuantity}
+                      deleteItem={deleteItem}
+                      updateItemQty={updateItemQty}
                       key={item.id}
                     />
                   </div>
