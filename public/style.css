@@ -218,6 +218,7 @@ form div {
 .singleViewNavbar .singleViewNavbarLink {
   height: 1.5em;
   margin: 0 0.75em 0 0.75em;
+  color: rgb(0, 38, 255);
 }
 
 .textSeparator {
@@ -236,8 +237,8 @@ form div {
 .singleViewSecondSection {
   border-style: double;
   width: 80%;
-  height: 50%;
-  margin-top: 10%;
+  height: 70%;
+  margin-top: 5%;
   border-radius: 0.5em 0.5em 0.5em 0.5em;
   color: #c0c0c0;
   box-shadow: 0.1vw 0.2vw #3a1e1e;
@@ -376,15 +377,17 @@ form div {
 }
 
 .singleViewSecondSection .singleViewDescriptionPrice {
-  width: 15%;
-  height: 80%;
+  width: 30%;
+  height: auto;
   border-style: double;
-  margin-top: 5%;
+  margin-top: 1%;
   border-radius: 0.5em 0.5em 0.5em 0.5em;
   color: #c0c0c0;
   box-shadow: 0.1vw 0.2vw #3a1e1e;
-  margin-left: 5%;
+  margin-left: 1%;
   position: absolute;
+  display: flex;
+  flex-direction: column;
 }
 
 .singleViewSecondSection .singleViewDescriptionPrice > div {
@@ -392,10 +395,10 @@ form div {
   width: 90%;
   height: auto;
   text-align: center;
-  font-size: 0.2em;
+  font-size: 0.6em;
   border-style: groove;
   justify-content: space-between;
-  margin: 1em;
+  margin: 2em;
   margin-right: 4em;
   color: black;
 }
@@ -413,7 +416,73 @@ form div {
 }
 
 .footerSingleView {
+  margin-top: 0%;
+}
+
+.editForm {
   margin-top: 50%;
+  text-align: center;
+}
+
+.editCarButton {
+  border: none;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 1rem;
+  color: rgb(68, 68, 68);
+  background: rgba(255, 187, 0, 0.247);
+  cursor: pointer;
+  padding: 0.5em 1em;
+  width: 50%;
+  letter-spacing: 0.15em;
+  font-weight: bolder;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.editCarButton:hover {
+  -webkit-transform: rotateY(25deg);
+  -moz-transform: rotateY(25deg);
+  -ms-transform: rotateY(25deg);
+  transform: rotateY(25deg);
+}
+
+.editCarButton:focus {
+  outline: none;
+}
+
+.addCarLink {
+  padding: 0.1em 0.8em;
+  background-color: rgba(128, 128, 128, 0.164);
+}
+
+.addCarForm {
+  border: inset;
+  border-radius: 1em;
+  border-width: 0.2em;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 1rem;
+  color: rgb(68, 68, 68);
+  background: rgba(255, 187, 0, 0.068);
+  cursor: pointer;
+  padding: 0.5em 1em;
+  width: 90%;
+  letter-spacing: 0.15em;
+  font-weight: bolder;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.addCarForm:hover {
+  -webkit-transform: rotateX(15deg);
+  -moz-transform: rotateX(15deg);
+  -ms-transform: rotateX(15deg);
+  transform: rotateX(15deg);
+}
+
+.addCarForm:focus {
+  outline: none;
 }
 
 /*  Main products page list */
