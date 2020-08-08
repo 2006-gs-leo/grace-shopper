@@ -27,7 +27,6 @@ export class SingleCarView extends React.Component {
     this.showEditForm = this.showEditForm.bind(this)
     this.mapInputToState = this.mapInputToState.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.addToLocalStorage = this.addToLocalStorage.bind(this)
   }
 
   componentDidMount() {
@@ -122,6 +121,7 @@ export class SingleCarView extends React.Component {
   }
 
   render() {
+    console.log(this.props.cars.SingleCar)
     return (
       <div>
         <div className="singleViewNavbar">
@@ -159,7 +159,7 @@ export class SingleCarView extends React.Component {
             className="singleViewBackgroundImage"
             src="https://image.freepik.com/free-photo/3d-render-background-car_54981-80.jpg"
           />
-          <div className="moreDetails">â†“ Scroll for more details</div>
+          <div className="moreDetails">↓ Scroll for more details</div>
         </div>
 
         <div className="singleViewDivider">===</div>
@@ -182,11 +182,7 @@ export class SingleCarView extends React.Component {
                 <br />-{`${this.props.cars.SingleCar.price}`}-
               </div>
               <br />
-              <button
-                id="addToCartButton"
-                type="button"
-                onClick={this.addToLocalStorage}
-              >
+              <button id="addToCartButton" type="button">
                 Add to Cart
               </button>
             </div>

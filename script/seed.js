@@ -2,7 +2,7 @@
 const chalk = require('chalk')
 
 const db = require('../server/db')
-const {User, Car} = require('../server/db/models')
+const {User, Car, Order, CarsAndOrders} = require('../server/db/models')
 const faker = require('faker')
 
 async function seed() {
@@ -71,6 +71,7 @@ async function seed() {
       make: 'Honda',
       model: 'CR-V LX',
       vehicleYear: 2020,
+      title: 'Honda CR-V LX',
       description:
         '- Radiant Red 2020 Honda CR-V LX AWD CVT 1.5L I4 DOHC 16VAs the most aggressive New Car dealer in Northeastern Ohio, our prices stand out among the competition !!! This Honda also qualifies for exclusive College Grad Program, College Grad down payment assistance, Military appreciation program. Please see dealer for important details and eligibility.In uncertain times, one thing is certain -- Honda of Mentor is here for you! *Council of Excellence Winner. *90 Day Sirius/XM Satellite Radio Trial with all properly equipped cars. *BBB A+ Accredited Business. *New State-of-the-Art Dealership *Extended sales and service hours *Courtesy Shuttle, Cable TV, Wi-Fi, - This 2020 Honda CR-V 4dr LX features a 1.5L 4 CYLINDER 4cyl Gasoline engine. It is equipped with a Continuously Variable transmission. The vehicle is Radiant Red Metallic with a Gray interior. It is offered with a full factory warranty. - Air Conditioning, Climate Control, Power Steering, Power Mirrors, Clock, Tachometer, Telescoping Steering Wheel, Steering Wheel Radio Controls, Driver Airbag, Passenger Airbag, Side Airbags, Keyless Entry, Rear Defogger, Intermittent Wipers, Anti-Theft, Carpeted Floor Mats, Center Arm Rest, Child Proof Door Locks, Daytime Running Lights, Overhead Console, Premium Sound, Rear Spoiler, Rear Spoiler, Rear Wipers, Remote Fuel Door, Reverse Camera, Roll Stability Control, Side Curtain Airbags, Sliding Rear Window, Tire Pressure Monitor, Vanity Mirrors -',
       price: 27645,
@@ -85,6 +86,7 @@ async function seed() {
     Car.create({
       make: 'Toyota',
       model: 'Camry XSE V6',
+      title: 'Toyota Camry XSE V6',
       vehicleYear: 2019,
       description:
         '2020 Honda Civic Si 1.5L I4 DOHC 16V Aegean Blue Metallic FWD 6-Speed Manual BLUETOOTH(R) CONNECTION FOR MOBILE PHONE, POWER SLIDING SUNROOF/MOONROOF, REAR BACK-UP CAMERA w/DISPLAY, SIRIUS XM SATELLITE RADIO, Automatic temperature control, Electronic Stability Control, Front dual zone A/C, Remote keyless entry, Steering wheel mounted audio controls. ~ RUSS DARROW GOLD CARD ($1,597 Value) INCLUDED WITH THIS VEHICLE! ~~ * 3 Oil Changes at no cost * PRIORITY Service Scheduling * BUY 4 Oil Changes, Get the 5th Oil Change at no cost * Complimentary Car Wash with Any Service * Complimentary 1-Day Rental with $400+ of Repairs or Maintenance * Complimentary Shuttle Service (Round Trip in Our Trade Area) * Complimentary Multi-Point Inspection with Any Service * AND MORE! Disclaimer (Tax, title, license, and service fees extra) Due to constantly changing market conditions our published live market prices are valid for 24 hours.',
@@ -476,6 +478,36 @@ async function seed() {
 
   console.log(chalk.yellow(`seeded ${cars.length} cars`))
   console.log(chalk.green(`seeded successfully`))
+  await Promise.all([
+    Order.create({
+      userId: 10,
+      id: 1,
+      fulfilled: true
+    }),
+    Order.create({
+      userId: 20,
+      id: 2,
+      fulfilled: true
+    })
+  ])
+
+  await Promise.all([
+    CarsAndOrders.create({
+      carId: 30,
+      orderId: 1,
+      quantity: 2,
+      price: 10000
+    }),
+    CarsAndOrders.create({
+      carId: 1,
+      orderId: 2,
+      quantity: 3,
+      price: 10510
+    })
+  ])
+
+  console.log(`seeded ${cars.length} cars`)
+  console.log(`seeded successfully`)
 }
 
 // We've separated the `seed` function from the `runSeed` function.
