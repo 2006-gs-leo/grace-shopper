@@ -50,6 +50,9 @@ const Navbar = ({handleClick, isLoggedIn}) => (
             <Link className="right-side-nav" to="/cart">
               CART
             </Link>
+            <Link className="right-side-nav" to="/home">
+              PROFILE
+            </Link>
             <i className="fas fa-shopping-cart" />
             <Link className="right-side-nav" to="/login">
               LOGIN

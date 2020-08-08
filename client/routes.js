@@ -16,7 +16,8 @@ class Routes extends Component {
 
   render() {
     const {isLoggedIn} = this.props
-
+    console.log('isLoggedInisLoggedIn', isLoggedIn)
+    console.log('this.propssssssssss mon', this.state)
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
@@ -25,6 +26,7 @@ class Routes extends Component {
         <Route path="/mainpage" component={MainPage} />
         <Route path="/cart" component={Cart} />
         <Route path="/SingleCarView/:carId" component={SingleCarView} />
+        <Route path="/home" component={UserHome} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}

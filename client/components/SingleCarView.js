@@ -122,7 +122,6 @@ export class SingleCarView extends React.Component {
   }
 
   render() {
-    console.log('this.props.cars.SingleCar', this.props.cars.SingleCar)
     return (
       <div>
         <div className="singleViewNavbar">

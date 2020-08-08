@@ -7,7 +7,7 @@ import history from '../history'
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
 const ADD_USER = 'ADD_USER'
-
+const SET_FETCHING_STATUS = 'SET_FETCHING_STATUS'
 /**
  * INITIAL STATE
  */
@@ -16,9 +16,20 @@ const defaultUser = {}
 /**
  * ACTION CREATORS
  */
-const getUser = user => ({type: GET_USER, user})
+const getUser = user => {
+  console.log('Action creator user', user)
+  return {
+    type: GET_USER,
+    user
+  }
+}
 const removeUser = () => ({type: REMOVE_USER})
 const addUser = () => ({type: ADD_USER})
+
+const setFetchingStatus = isFetching => ({
+  type: SET_FETCHING_STATUS,
+  isFetching
+})
 
 /**
  * THUNK CREATORS
@@ -29,6 +40,29 @@ export const me = () => async dispatch => {
     dispatch(getUser(res.data || defaultUser))
   } catch (err) {
     console.error(err)
+  }
+}
+export const fetchMe = () => {
+  return async dispatch => {
+    dispatch(setFetchingStatus(true))
+    try {
+      const response = await axios.get('/auth/me')
+      dispatch(getUser(response.data))
+    } catch (error) {
+      console.error(error)
+    } finally {
+      dispatch(setFetchingStatus(false))
+    }
+  }
+}
+export const login = credentials => {
+  return async dispatch => {
+    try {
+      const response = await axios.put('/auth/login', credentials)
+      dispatch(getUser(response.data))
+    } catch (error) {
+      console.error(error)
+    }
   }
 }
 
@@ -44,6 +78,7 @@ export const addNewUser = user => async dispatch => {
 export const auth = (email, password, method) => async dispatch => {
   let res
   try {
+    console.log('Thunk AUth email', email)
     res = await axios.post(`/auth/${method}`, {email, password})
   } catch (authError) {
     return dispatch(getUser({error: authError}))

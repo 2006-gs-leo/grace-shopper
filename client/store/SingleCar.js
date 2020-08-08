@@ -13,10 +13,8 @@ const addSingleCar = car => ({type: ADD_NEW_CAR, car})
 export const fetchSingleCarData = carId => {
   return async dispatch => {
     try {
-      console.log('DID WE GET TO THIS THUNK')
       const response = await axios.get(`/api/cars/${carId}`)
       const {data} = response
-      console.log('responseresponseresponse', response)
       dispatch(getSingleCar(data))
     } catch (error) {
       console.error(error)
