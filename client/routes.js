@@ -26,11 +26,12 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Signup} />
         <Route path="/mainpage" component={MainPage} />
+        <Route exact path="/cars" component={MainPage} />
         <Route path="/add" component={AddCar} />
-        <Route path="/SingleCarView/:carId" component={SingleCarView} />
+        <Route exact path="/cars/:carId" component={SingleCarView} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
