@@ -105,6 +105,7 @@ export default function Footer() {
           SEARCH CARS
         </a>
         <span>|</span>
+
         <a className="botInfoAtags" href="/referral" target="_self" rel="">
           REFERRAL PROGRAM
         </a>

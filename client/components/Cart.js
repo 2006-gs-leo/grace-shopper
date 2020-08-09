@@ -73,6 +73,8 @@ export class Cart extends Component {
     return (
       <div className="cartmaindiv">
         <div className="parentcart">
+          <CheckOut handleChange={this.handleChange} />
+
           <div className="itemsDiv">
             <header>
               <CartNavbar deleteItem={deleteItem} />
