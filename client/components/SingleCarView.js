@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import {fetchSingleCarData, editSingleCarData} from '../store/SingleCar'
 import EditCar from './EditCar'
 
@@ -26,10 +27,10 @@ export class SingleCarView extends React.Component {
     this.showEditForm = this.showEditForm.bind(this)
     this.mapInputToState = this.mapInputToState.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.addToLocalStorage = this.addToLocalStorage.bind(this)
   }
 
   componentDidMount() {
-    console.log('The single car view component is mounted!')
     this.props.fetchCar(this.props.match.params.carId)
   }
 
@@ -181,7 +182,11 @@ export class SingleCarView extends React.Component {
                 <br />-{`${this.props.cars.SingleCar.price}`}-
               </div>
               <br />
-              <button id="addToCartButton" type="button">
+              <button
+                id="addToCartButton"
+                type="button"
+                onClick={this.addToLocalStorage}
+              >
                 Add to Cart
               </button>
             </div>

@@ -17,7 +17,7 @@ export default class CartItem extends Component {
   removeItemFromCart(key) {
     localStorage.removeItem(key)
     this.setState({
-      cart: ''
+      item: ''
     })
   }
 

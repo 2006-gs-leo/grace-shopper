@@ -23,8 +23,7 @@ class Routes extends Component {
 
   render() {
     const {isLoggedIn} = this.props
-    console.log('isLoggedInisLoggedIn', isLoggedIn)
-    console.log('this.propssssssssss mon', this.state)
+
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
