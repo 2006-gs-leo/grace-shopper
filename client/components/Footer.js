@@ -126,21 +126,21 @@ export default function Footer() {
           PATENTS
         </a>
         <span>|</span>
-        <div className="socialmediaicon">
+        <div className="socialmediaicons">
           <a className="facebookIcon" href="https://www.facebook.com/">
-            facebook
+            <img className="socialmediaicons" src="facebook-logo.png" />
           </a>
           <a className="twitterIcon" href="https://twitter.com/">
-            twitter
+            <img className="socialmediaicons" src="twitter-logo.png" />
           </a>
           <a className="pintrestIcon" href="https://www.pinterest.com/">
-            pintrest
+            <img className="socialmediaicons" src="pinterest-logo.png" />
           </a>
           <a className="linkedin" href="https://www.linkedin.com/">
-            linkedin
+            <img className="socialmediaicons" src="linkedin-logo.png" />
           </a>
           <a className="instagram" href="https://www.instagram.com/">
-            instagram
+            <img className="socialmediaicons" src="instagram-logo.png" />
           </a>
         </div>
         <div className="sc-hSdWYo hckRsN sc-bwzfXH lcIaHP">
