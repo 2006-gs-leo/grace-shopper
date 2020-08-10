@@ -41,7 +41,7 @@ class AuthForm extends Component {
 
     return (
       <div className="authFormWhole">
-        <form className="form-signin" onSubmit={this.handleSubmit} name={name}>
+        <form className="form-signin" onSubmit={handleSubmit} name={name}>
           <div className="emailForm">
             <img src="JDBCARS_LOGO.png" alt="" />
             {displayName === 'Sign Up' ? (

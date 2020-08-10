@@ -102,50 +102,89 @@ export default function Footer() {
         </div>
       </div>
       <div className="bottombarinfo">
-        <a href="/cars" target="_self" rel="">
-          SEARCH CARS
-        </a>
-        <span>|</span>
+        <div className="middleFooter">
+          <a href="/cars" target="_self" rel="">
+            SEARCH CARS
+          </a>
+          <span className="botInfoAtags">|</span>
 
-        <a className="botInfoAtags" href="/referral" target="_self" rel="">
-          REFERRAL PROGRAM
-        </a>
-        <span>|</span>
-        <a
-          href="https://investors.carvana.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          INVESTORS
-        </a>
-        <span>|</span>
-        <a href="/research" target="_blank" rel="noopener noreferrer">
-          BLOG
-        </a>
-        <span>|</span>
-        <a href="/patents" target="_self" rel="">
-          PATENTS
-        </a>
-        <span>|</span>
-        <div className="socialmediaicon">
-          <a className="facebookIcon" href="https://www.facebook.com/">
-            facebook
+          <a className="botInfoAtags" href="/referral" target="_self" rel="">
+            REFERRAL PROGRAM
           </a>
-          <a className="twitterIcon" href="https://twitter.com/">
-            twitter
+          <span className="botInfoAtags">|</span>
+          <a
+            href="https://investors.carvana.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            INVESTORS
           </a>
-          <a className="pintrestIcon" href="https://www.pinterest.com/">
-            pintrest
+          <span className="botInfoAtags">|</span>
+          <a href="/research" target="_blank" rel="noopener noreferrer">
+            BLOG
           </a>
-          <a className="linkedin" href="https://www.linkedin.com/">
-            linkedin
+          <span className="botInfoAtags">|</span>
+          <a href="/patents" target="_self" rel="">
+            PATENTS
           </a>
-          <a className="instagram" href="https://www.instagram.com/">
-            instagram
-          </a>
+          <span className="botInfoAtags">|</span>
+          <div className="socialmediaicons">
+            <a className="facebookIcon" href="https://www.facebook.com/">
+              <img className="socialmediaicons" src="facebook-logo.png" />
+            </a>
+            <a className="twitterIcon" href="https://twitter.com/">
+              <img className="socialmediaicons" src="twitter-logo.png" />
+            </a>
+            <a className="pintrestIcon" href="https://www.pinterest.com/">
+              <img className="socialmediaicons" src="pinterest-logo.png" />
+            </a>
+            <a className="linkedin" href="https://www.linkedin.com/">
+              <img className="socialmediaicons" src="linkedin-logo.png" />
+            </a>
+            <a className="instagram" href="https://www.instagram.com/">
+              <img className="socialmediaicons" src="instagram-logo.png" />
+            </a>
+          </div>
         </div>
-        <div className="sc-hSdWYo hckRsN sc-bwzfXH lcIaHP">
+        <div className="bottNavthingy">
           Copyright © 2020 JDB. All Rights Reserved.
+          <div>
+            <a href="/TermsofUseandPrivacyPolicy" target="_self" rel="">
+              Terms of Use and Privacy Policy
+            </a>
+            <span className="botInfoAtags">|</span>
+
+            <a
+              className="botInfoAtags"
+              href="/FinancialPrivacyPolicy"
+              target="_self"
+              rel=""
+            >
+              Financial Privacy Policy
+            </a>
+            <span className="botInfoAtags">|</span>
+            <a
+              href="/DoNotSellMyInfo"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Do Not Sell My Info
+            </a>
+            <span className="botInfoAtags">|</span>
+            <a href="/CodeofConduct" target="_blank" rel="noopener noreferrer">
+              Code of Conduct
+            </a>
+            <span className="botInfoAtags">|</span>
+            <div>
+              <a href="/Accessibility" target="_self" rel="">
+                Accessibility
+              </a>
+              <span className="botInfoAtags">|</span>
+              <a href="/SiteMap" target="_self" rel="">
+                Site Map
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

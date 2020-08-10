@@ -6,8 +6,7 @@ import history from '../history'
  */
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
-const ADD_USER = 'ADD_USER'
-const SET_FETCHING_STATUS = 'SET_FETCHING_STATUS'
+
 /**
  * INITIAL STATE
  */
@@ -16,19 +15,15 @@ const defaultUser = {}
 /**
  * ACTION CREATORS
  */
+
 const getUser = user => {
   return {
     type: GET_USER,
     user
   }
 }
-const removeUser = () => ({type: REMOVE_USER})
-const addUser = () => ({type: ADD_USER})
 
-const setFetchingStatus = isFetching => ({
-  type: SET_FETCHING_STATUS,
-  isFetching
-})
+const removeUser = () => ({type: REMOVE_USER})
 
 /**
  * THUNK CREATORS
@@ -41,6 +36,7 @@ export const me = () => async dispatch => {
     console.error(err)
   }
 }
+
 export const fetchMe = () => {
   return async dispatch => {
     dispatch(setFetchingStatus(true))
