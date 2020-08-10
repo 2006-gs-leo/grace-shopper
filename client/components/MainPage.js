@@ -42,8 +42,6 @@ export class MainPage extends React.Component {
   render() {
     // initially in this react lifecycle, this.state.cars doesn't exist
     let cars = this.state.cars
-    console.log('in the render section ', cars)
-
     const imageList = [
       'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSiK4LqjrlJd1zvQeDAVUeAWCS2DvDYJNQVEA&usqp=CAU',
       'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSWzXSd6DsiN56BYkDMbrqyFtE6E7wSnnQB4g&usqp=CAU',

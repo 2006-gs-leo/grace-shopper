@@ -9,4 +9,7 @@ export {default as MainPage} from './MainPage'
 export {default as SingleCarView} from './SingleCarView'
 export {default as EditCar} from './EditCar'
 export {default as AddCar} from './AddCar'
-export {Login, Signup} from './auth-form'
+export {default as AboutUs} from './AboutUs'
+export {default as HowItWorks} from './HowItWorks'
+export {default as SupportAndContact} from './SupportAndContact'
+export {Login, Signup} from './auth-form' // this is where we export the login form

@@ -8,7 +8,10 @@ import {
   UserHome,
   MainPage,
   SingleCarView,
-  AddCar
+  AddCar,
+  AboutUs,
+  HowItWorks,
+  SupportAndContact
 } from './components'
 import {me} from './store'
 import {Cart} from './components/Cart'
@@ -33,6 +36,9 @@ class Routes extends Component {
         <Route exact path="/cars" component={MainPage} />
         <Route exact path="/cart" component={Cart} />
         <Route path="/add" component={AddCar} />
+        <Route path="/aboutus" component={AboutUs} />
+        <Route path="/howitworks" component={HowItWorks} />
+        <Route path="/support" component={SupportAndContact} />
         <Route exact path="/cars/:carId" component={SingleCarView} />
         {isLoggedIn && (
           <Switch>

@@ -19,15 +19,21 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       </a>
     </div>
     <div className="navbarHeaderInfo">
-      <Link className="AnchnavbarHeaderInfo" to="/howitworks">
-        How it Works?
-      </Link>
-      <Link className="AnchnavbarHeaderInfo" to="/aboutus">
-        About JDG
-      </Link>
-      <Link className="AnchnavbarHeaderInfo" to="/support">
-        Support & Contact
-      </Link>
+      <div>
+        <Link className="AnchnavbarHeaderInfo" to="/howitworks">
+          How it Works?
+        </Link>
+      </div>
+      <div>
+        <Link className="AnchnavbarHeaderInfo" to="/aboutus">
+          About JDG
+        </Link>
+      </div>
+      <div>
+        <Link className="AnchnavbarHeaderInfo" to="/support">
+          Support & Contact
+        </Link>
+      </div>
     </div>
     <div className="navbar">
       <nav>

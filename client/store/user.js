@@ -58,8 +58,13 @@ export const fetchMe = () => {
 export const login = credentials => {
   return async dispatch => {
     try {
-      const response = await axios.put('/auth/login', credentials)
-      dispatch(getUser(response.data))
+      console.log('did we reach the login thunk creator?')
+      const response = await axios.put('/auth/login', credentials) // this is where we actually make the axios.put request, to /auth/login
+      console.log(
+        'within the login thunk creator, the response returned from the server was ',
+        response
+      )
+      dispatch(getUser(response.config.data))
     } catch (error) {
       console.error(error)
     }
@@ -108,7 +113,14 @@ export const logout = () => async dispatch => {
 export default function(state = defaultUser, action) {
   switch (action.type) {
     case GET_USER:
-      return action.user
+      console.log(
+        'our reducer is going to be modified with the following action.user: ',
+        action.user
+      )
+      return {
+        ...state,
+        user: action.user
+      }
     case REMOVE_USER:
       return defaultUser
     default:
