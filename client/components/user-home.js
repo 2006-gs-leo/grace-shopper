@@ -60,7 +60,6 @@ const userOwnedCars = [
 export const UserHome = props => {
   // const [user, setUser] = useState({ user: [] });
   const {email, user} = props
-  console.log('useruseruser', user)
 
   return (
     <div>

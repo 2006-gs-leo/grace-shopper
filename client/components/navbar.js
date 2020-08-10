@@ -19,15 +19,21 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       </a>
     </div>
     <div className="navbarHeaderInfo">
-      <Link className="AnchnavbarHeaderInfo" to="/howitworks">
-        How it Works?
-      </Link>
-      <Link className="AnchnavbarHeaderInfo" to="/aboutus">
-        About JDG
-      </Link>
-      <Link className="AnchnavbarHeaderInfo" to="/support">
-        Support & Contact
-      </Link>
+      <div>
+        <Link className="AnchnavbarHeaderInfo" to="/howitworks">
+          How it Works?
+        </Link>
+      </div>
+      <div>
+        <Link className="AnchnavbarHeaderInfo" to="/aboutus">
+          About JDG
+        </Link>
+      </div>
+      <div>
+        <Link className="AnchnavbarHeaderInfo" to="/support">
+          Support & Contact
+        </Link>
+      </div>
     </div>
     <div className="navbar">
       <nav>
@@ -60,9 +66,8 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <div className="navbar">
             {/* The navbar will show these links before you log in */}
             <img className="logo" src="JDBCARS_LOGO.png" />
-            <Link to="/MainPage">SEARCH CARS</Link>
-            <Link to="/add">ADD CARS</Link>
-            <Link to="/sell-trade">SELL/TRADE</Link>
+            <Link to="/main">SEARCH CARS</Link>
+            <Link to="/add">SELL/TRADE</Link>
             <Link to="/carfinder">CAR FINDER</Link>
             <Link className="right-side-nav" to="/cart">
               CART
