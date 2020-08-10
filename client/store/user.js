@@ -17,7 +17,6 @@ const defaultUser = {}
  * ACTION CREATORS
  */
 const getUser = user => {
-  console.log('Action creator user', user)
   return {
     type: GET_USER,
     user
@@ -58,8 +57,8 @@ export const fetchMe = () => {
 export const login = credentials => {
   return async dispatch => {
     try {
-      const response = await axios.put('/auth/login', credentials)
-      dispatch(getUser(response.data))
+      const response = await axios.put('/auth/login', credentials) // this is where we actually make the axios.put request, to /auth/login
+      dispatch(getUser(response.config.data))
     } catch (error) {
       console.error(error)
     }
@@ -78,7 +77,6 @@ export const addNewUser = user => async dispatch => {
 export const auth = (email, password, method) => async dispatch => {
   let res
   try {
-    console.log('Thunk AUth email', email)
     res = await axios.post(`/auth/${method}`, {email, password})
   } catch (authError) {
     return dispatch(getUser({error: authError}))
@@ -108,7 +106,10 @@ export const logout = () => async dispatch => {
 export default function(state = defaultUser, action) {
   switch (action.type) {
     case GET_USER:
-      return action.user
+      return {
+        ...state,
+        user: action.user
+      }
     case REMOVE_USER:
       return defaultUser
     default:

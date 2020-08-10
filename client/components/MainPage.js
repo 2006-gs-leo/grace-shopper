@@ -6,30 +6,81 @@ import {fetchCars} from '../store/cars'
 export class MainPage extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      cars: this.props.cars // initial value before sorting
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSearch = this.handleSearch.bind(this)
   }
 
   componentDidMount() {
     this.props.fetchCars()
-    console.log('The main page component is mounted!')
+  }
+
+  handleChange(e) {
+    let selectedOption = e.target.value
+    this.setState({
+      // re-renders after changing state
+      cars: this.props.cars.sort(
+        (a, b) => (a[selectedOption] > b[selectedOption] ? 1 : -1)
+      )
+    })
+  }
+
+  handleSearch(e) {
+    let searchValue = e.target.value
+    this.setState({
+      // re-renders after changing state
+      cars: this.props.cars.filter(element => {
+        return element.make === searchValue
+      })
+    })
   }
 
   render() {
-    const cars = this.props.cars
+    // initially in this react lifecycle, this.state.cars doesn't exist
+    let cars = this.state.cars
+    const imageList = [
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSiK4LqjrlJd1zvQeDAVUeAWCS2DvDYJNQVEA&usqp=CAU',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSWzXSd6DsiN56BYkDMbrqyFtE6E7wSnnQB4g&usqp=CAU',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSv1c_369ipGE11_UQYGKy0-Zxa6-BqCRR_AA&usqp=CAU',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRsb8A181AO7-9Ph8aKGgqGZ_TSSCApx1J0Rg&usqp=CAU',
+      'https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/body-image/public/bugatti-chiron_0.jpg?itok=VIJ83UQt',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT3sk2CfSsAv_WHqnnCErpgSPynOBLMUDSGcQ&usqp=CAU',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRWDo6QSrxSZn1_PVHHaqyBJLEH2ZyDfEMNSw&usqp=CAU',
+      'https://www.generatormix.com/images/cars/brooke.jpg',
+      'https://www.generatormix.com/images/cars/mazda.jpg',
+      'https://www.generatormix.com/images/cars/landrover.jpg'
+    ]
 
     return (
       <div>
         <br />
         <br />
         <br />
-        <select name="cars" className="select-css">
-          <option value="Price">Price</option>
-          <option value="Make">Make</option>
-          <option value="Model">Model</option>
-          <option value="Date_Added">Date Added</option>
-          <option value="Average_Rating">Average Rating</option>
+        <select name="cars" className="select-css" onChange={this.handleChange}>
+          <option value="" disabled selected>
+            Select an option
+          </option>
+          <option value="cylinderCount">Cylinder Count</option>
+          <option value="drivetrain">Drive Train</option>
+          <option value="exteriorColor">Exterior Color</option>
+          <option value="id">ID</option>
+          <option value="interiorColor">Interior Color</option>
+          <option value="make">Make</option>
+          <option value="model">Model</option>
+          <option value="mpg">MPG</option>
+          <option value="price">Price</option>
+          <option value="quantity">Quantity</option>
+          <option value="transmission">Transmission</option>
+          <option value="vehicleYear">Vehicle Year</option>
         </select>
-        <input className="mainInput" type="text" placeholder="Search.." />
+        <input
+          className="mainInput"
+          type="text"
+          placeholder="Search by make.."
+          onChange={this.handleSearch}
+        />
 
         <div className="carList">
           {cars.length > 0 ? (
@@ -40,7 +91,7 @@ export class MainPage extends React.Component {
                     <div>
                       <img
                         className="carImg"
-                        src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
+                        src={imageList[Math.floor(Math.random() * 10)]}
                       />
                     </div>
                     <div>
@@ -55,7 +106,7 @@ export class MainPage extends React.Component {
               )
             })
           ) : (
-            <h1>No Cars Available</h1>
+            <h1>No Cars with the Criteria Available</h1>
           )}
         </div>
 

@@ -3,6 +3,7 @@ const User = require('./user')
 const Car = require('./car')
 const Order = require('./order')
 const CarsAndOrders = require('./carsAndOrders')
+const Cart = require('./cart')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -29,5 +30,6 @@ module.exports = {
   User,
   Car,
   Order,
-  CarsAndOrders
+  CarsAndOrders,
+  Cart
 }
