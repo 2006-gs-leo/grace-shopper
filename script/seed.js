@@ -507,8 +507,8 @@ async function seed() {
     })
   ])
 
-  console.log(`seeded ${cars.length} cars`)
-  console.log(`seeded successfully`)
+  console.log(chalk.green(`seeded ${cars.length} cars`))
+  console.log(chalk.green(`seeded successfully`))
 }
 
 // We've separated the `seed` function from the `runSeed` function.
@@ -524,7 +524,7 @@ async function runSeed() {
   } finally {
     console.log(chalk.green('closing db connection'))
     await db.close()
-    console.log(chalk.green('db connection closed'))
+    console.log(chalk.red('db connection closed'))
   }
 }
 

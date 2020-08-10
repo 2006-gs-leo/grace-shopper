@@ -64,10 +64,17 @@ export const UserHome = props => {
   return (
     <div>
       <div className="userProfilecard">
-        <h3>Welcome, {email}</h3>
+        <h3>
+          Welcome,
+          <div>
+            {user.firstName} {user.lastName}
+          </div>
+        </h3>
         <img src="JDBCARS_LOGO.png" alt="John" />
-        <h1>user.name</h1>
-        <p className="userProfiletitle">user.something</p>
+        <h1>{user.name}</h1>
+        <p className="userProfiletitle">
+          <img src={user.image} />{' '}
+        </p>
         <p>user.CarsOwned</p>
         {userOwnedCars.map(car => (
           <div key={car.id} className="singleCarDiv">
