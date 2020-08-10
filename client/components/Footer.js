@@ -104,12 +104,12 @@ export default function Footer() {
         <a href="/cars" target="_self" rel="">
           SEARCH CARS
         </a>
-        <span>|</span>
+        <span className="seperationBar">|</span>
 
-        <a className="botInfoAtags" href="/referral" target="_self" rel="">
+        <a href="/referral" target="_self" rel="">
           REFERRAL PROGRAM
         </a>
-        <span>|</span>
+        <span className="seperationBar">|</span>
         <a
           href="https://investors.carvana.com"
           target="_blank"
@@ -117,30 +117,36 @@ export default function Footer() {
         >
           INVESTORS
         </a>
-        <span>|</span>
+        <span className="seperationBar">|</span>
         <a href="/research" target="_blank" rel="noopener noreferrer">
           BLOG
         </a>
-        <span>|</span>
-        <a href="/patents" target="_self" rel="">
+        <span className="seperationBar">|</span>
+        <a lassName="seperationBar" href="/patents" target="_self" rel="">
           PATENTS
         </a>
-        <span>|</span>
+        <span className="seperationBar">|</span>
         <div className="socialmediaicon">
-          <a className="facebookIcon" href="https://www.facebook.com/">
-            facebook
+          <a className="socialmediaicons" href="https://www.facebook.com/">
+            <img className="socialmediaicons" src="facebook-logo-white.png" />
           </a>
-          <a className="twitterIcon" href="https://twitter.com/">
-            twitter
+          <a className="socialmediaicons" href="https://twitter.com/">
+            <img
+              className="socialmediaicons"
+              src="twitter-icon-png-white.png"
+            />
           </a>
-          <a className="pintrestIcon" href="https://www.pinterest.com/">
-            pintrest
+          <a className="socialmediaicons" href="https://www.pinterest.com/">
+            <img className="socialmediaicons" src="pinterest-white- logo.png" />
           </a>
-          <a className="linkedin" href="https://www.linkedin.com/">
-            linkedin
+          <a className="socialmediaicons" href="https://www.linkedin.com/">
+            <img
+              className="socialmediaicons"
+              src="linkedin-icon-white-png.png"
+            />
           </a>
-          <a className="instagram" href="https://www.instagram.com/">
-            instagram
+          <a className="socialmediaicons" href="https://www.instagram.com/">
+            <img className="socialmediaicons" src="instagram-logo-png.png" />
           </a>
         </div>
         <div className="sc-hSdWYo hckRsN sc-bwzfXH lcIaHP">

@@ -237,8 +237,11 @@ form div {
   justify-content: center;
 }
 
-.socialmediaicon {
-  padding: 16px 0px 10px;
+.socialmediaicons {
+  padding: 10px 2px 10px 2px;
+}
+.seperationBar {
+  padding: 10px 10px 10px 10px;
 }
 
 .botInfoAtags {
