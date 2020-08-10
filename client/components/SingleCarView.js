@@ -35,7 +35,6 @@ export class SingleCarView extends React.Component {
   }
 
   addToLocalStorage() {
-    console.log('this is clicked', this.props.cars.SingleCar)
     localStorage.setItem(
       `${this.props.match.params.carId}`,
       JSON.stringify(this.props.cars.SingleCar)
@@ -121,7 +120,6 @@ export class SingleCarView extends React.Component {
   }
 
   render() {
-    console.log(this.props.cars.SingleCar)
     return (
       <div>
         <div className="singleViewNavbar">

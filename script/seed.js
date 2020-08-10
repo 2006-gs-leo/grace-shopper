@@ -19,7 +19,7 @@ async function seed() {
     })
   }
 
-  console.log(chalk.yellow(`seeded 100 users`))
+  console.log(chalk.yellow(`seeded 101 users`))
   console.log(chalk.green(`seeded successfully`))
 
   const cars = await Promise.all([

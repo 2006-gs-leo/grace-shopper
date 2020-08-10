@@ -1,6 +1,12 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetchCart, addItem, deleteItem, updateItemQty} from '../store/cart'
+import {
+  fetchCart,
+  addItem,
+  deleteItem,
+  updateItemQty,
+  saveCart
+} from '../store/cart'
 import CartItem from './CartItem'
 import CartNavbar from './CartNavbar'
 import CheckOut from './CheckOut'
@@ -8,10 +14,14 @@ import CheckOut from './CheckOut'
 let cartItems = []
 
 for (let element of Object.keys(localStorage)) {
-  cartItems.push(JSON.parse(localStorage.getItem(element)))
+  if (Number(element)) {
+    // need to make sure we're not iterating over everything else in local storage.
+    // helps to check whether we're looking at a car ID or something else
+    cartItems.push(JSON.parse(localStorage.getItem(element)))
+  }
 }
 
-export class Cart extends Component {
+class Cart extends Component {
   constructor() {
     super()
     this.state = {
@@ -30,9 +40,18 @@ export class Cart extends Component {
       amount: 0,
       total: 0
     })
-    console.log('Cart Mounter state =', this.state)
-    console.log('Cart Mounter props = ', this.props)
-    console.log('Cart Mounter cart items = ', cartItems)
+    // this.props.saveCart()
+    let userObject = this.props.reduxState.user.user
+    if (userObject === undefined || Object.keys(userObject).length === 0) {
+      userObject = 'none'
+    } else {
+      userObject = JSON.parse(this.props.reduxState.user.user)
+      console.log('cart items: ', cartItems)
+      console.log('cart items stringified', JSON.stringify(cartItems))
+      this.props.saveCart(userObject.email, 'cart data, stringified') // this is how we might access cart data across devices
+      // this.props.saveCart(userObject.email, JSON.stringify(cartItems))
+    } // so far the sample object shows up in the carts database, and now we need to decide what data we store and how we retrieve it
+    console.log(userObject)
   }
 
   clearLocalCart() {
@@ -65,7 +84,6 @@ export class Cart extends Component {
   }
 
   render() {
-    console.log('This is props on Cart.js', this.props)
     // let total = 0
     // item.forEach((product) => {
     //   total += product.price * product.productOrder.productQuantity
@@ -130,7 +148,8 @@ export class Cart extends Component {
 const mapStateToProps = state => {
   return {
     cart: state.cart,
-    user: state.user
+    user: state.user,
+    reduxState: state
   }
 }
 
@@ -139,7 +158,9 @@ const mapDispatchToProps = dispatch => {
     fetchCart: () => dispatch(fetchCart()),
     addItems: item => dispatch(addItem(item)),
     deleteItem: itemId => dispatch(deleteItem(itemId)),
-    updateItemQty: (itemId, itemQty) => dispatch(updateItemQty(itemId, itemQty))
+    updateItemQty: (itemId, itemQty) =>
+      dispatch(updateItemQty(itemId, itemQty)),
+    saveCart: (userEmail, data) => dispatch(saveCart(data))
   }
 }
 
