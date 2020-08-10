@@ -8,7 +8,11 @@ import CheckOut from './CheckOut'
 let cartItems = []
 
 for (let element of Object.keys(localStorage)) {
-  cartItems.push(JSON.parse(localStorage.getItem(element)))
+  if (Number(element)) {
+    // need to make sure we're not iterating over everything else in local storage.
+    // helps to check whether we're looking at a car ID or something else
+    cartItems.push(JSON.parse(localStorage.getItem(element)))
+  }
 }
 
 export class Cart extends Component {
