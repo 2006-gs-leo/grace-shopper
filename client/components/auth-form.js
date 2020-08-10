@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
 import {Link} from 'react-router-dom'
-import {addNewUser} from '../store/user'
+// import {addNewUser} from '../store/user'
 
 /**
  * COMPONENT
@@ -35,7 +35,7 @@ class AuthForm extends Component {
 
     return (
       <div className="authFormWhole">
-        <form className="form-signin" onSubmit={this.handleSubmit} name={name}>
+        <form className="form-signin" onSubmit={handleSubmit} name={name}>
           <div className="emailForm">
             <img src="JDBCARS_LOGO.png" alt="" />
             {displayName === 'Sign Up' ? (
