@@ -13,7 +13,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       />
       <span className="Covid19Banner">COVID-19 information</span>
       &nbsp;Touchless delivery/pickup is currently underway in your area.
-      <a data-qa="link" href="/touchless-delivery" className="Covid19Banner">
+      <a href="/touchless-delivery" className="Covid19Banner">
         {' '}
         Learn more
       </a>
@@ -48,8 +48,11 @@ const Navbar = ({handleClick, isLoggedIn}) => (
             <Link to="/add">ADD CARS</Link>
             <Link to="/sell-trade">SELL/TRADE</Link>
             <Link to="/carfinder">CAR FINDER</Link>
-            <Link className="right-side-nav" to="/login">
+            <Link className="right-side-nav" to="/cart">
               CART
+            </Link>
+            <Link className="right-side-nav" to="/home">
+              PROFILE
             </Link>
             <i className="fas fa-shopping-cart" />
             <Link className="right-side-nav" to="/login">

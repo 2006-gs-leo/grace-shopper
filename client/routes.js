@@ -11,6 +11,7 @@ import {
   AddCar
 } from './components'
 import {me} from './store'
+import {Cart} from './components/Cart'
 
 /**
  * COMPONENT
@@ -30,6 +31,7 @@ class Routes extends Component {
         <Route exact path="/signup" component={Signup} />
         <Route path="/mainpage" component={MainPage} />
         <Route exact path="/cars" component={MainPage} />
+        <Route exact path="/cart" component={Cart} />
         <Route path="/add" component={AddCar} />
         <Route exact path="/cars/:carId" component={SingleCarView} />
         {isLoggedIn && (

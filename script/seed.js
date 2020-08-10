@@ -1,4 +1,5 @@
 'use strict'
+const chalk = require('chalk')
 
 const db = require('../server/db')
 const {User, Car, Order, CarsAndOrders} = require('../server/db/models')
@@ -6,7 +7,7 @@ const faker = require('faker')
 
 async function seed() {
   await db.sync({force: true})
-  console.log('db synced!')
+  console.log(chalk.magentaBright('db synced!'))
 
   for (let i = 0; i < 100; i++) {
     await User.create({
@@ -17,8 +18,8 @@ async function seed() {
     })
   }
 
-  console.log(`seeded 100 users`)
-  console.log(`seeded successfully`)
+  console.log(chalk.yellow(`seeded 100 users`))
+  console.log(chalk.green(`seeded successfully`))
 
   const cars = await Promise.all([
     Car.create({
@@ -475,6 +476,8 @@ async function seed() {
     })
   ])
 
+  console.log(chalk.yellow(`seeded ${cars.length} cars`))
+  console.log(chalk.green(`seeded successfully`))
   await Promise.all([
     Order.create({
       userId: 10,
@@ -511,16 +514,16 @@ async function seed() {
 // This way we can isolate the error handling and exit trapping.
 // The `seed` function is concerned only with modifying the database.
 async function runSeed() {
-  console.log('seeding...')
+  console.log(chalk.cyanBright('seeding...'))
   try {
     await seed()
   } catch (err) {
     console.error(err)
     process.exitCode = 1
   } finally {
-    console.log('closing db connection')
+    console.log(chalk.green('closing db connection'))
     await db.close()
-    console.log('db connection closed')
+    console.log(chalk.green('db connection closed'))
   }
 }
 

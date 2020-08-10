@@ -1,9 +1,7 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {fetchCars} from '../store/cars'
-import {NavLink} from 'react-router-dom'
-import {Nav} from 'react-bootstrap'
 
 export class MainPage extends React.Component {
   constructor(props) {
