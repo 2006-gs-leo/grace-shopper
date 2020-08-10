@@ -9,17 +9,11 @@ class AboutUs extends React.Component {
 
   render() {
     let userObject = this.props.reduxState.user.user
-    console.log(
-      userObject === undefined || Object.keys(userObject).length === 0
-    )
     if (userObject === undefined || Object.keys(userObject).length === 0) {
       userObject = 'none'
     } else {
       userObject = JSON.parse(this.props.reduxState.user.user)
     }
-
-    console.log(userObject)
-
     return (
       <div>
         You have reached the About Us Page!
@@ -44,10 +38,10 @@ class AboutUs extends React.Component {
             <br />
 
             <div className="aboutUsText">
-              At JDB cars we just want to make sure that you get all the cars
-              that you want, and secondly that when you make an account and log
-              in, you can checkout cars. Only admins have the ability to edit,
-              add or remove. Anyway, we're just a car dealership in the sense of
+              At JDB cars we want to make sure that you get all the cars that
+              you want, and secondly when you make an account and log in, that
+              you can checkout cars. Only admins have the ability to edit, add
+              or remove. Anyway, we're just a car dealership in the sense of
               Carvana or Cars.com. We started less than a week ago and if you're
               not satisfied with your car, then you can blame us. We're an
               underground self made car sell and resell shop. We started out in
@@ -65,7 +59,7 @@ class AboutUs extends React.Component {
               data loaded from the database. That means, we needed to change the
               information that we were accepting within the database; Bobby did
               this, populating the database with arbitrary make, model,
-              vehicleYear, descriptino, price, engineType, mpg, exteriorColor,
+              vehicleYear, description, price, engineType, mpg, exteriorColor,
               interiorColor, transmission, drivetrain, and doors.
               <br />
               <br />

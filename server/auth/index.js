@@ -3,7 +3,6 @@ const User = require('../db/models/user')
 module.exports = router
 
 router.put('/login', (req, res, next) => {
-  console.log('did we reach the .put route for auth/login?')
   User.findOne({
     where: {
       email: req.body.email,
@@ -25,9 +24,6 @@ router.put('/login', (req, res, next) => {
 
 router.post('/login', async (req, res, next) => {
   try {
-    console.log(
-      'this message indicates that we reached the login route in server/auth/index.js'
-    )
     const user = await User.findOne({where: {email: req.body.email}})
     if (!user) {
       console.log('No such user found:', req.body.email)
@@ -45,10 +41,6 @@ router.post('/login', async (req, res, next) => {
 
 router.post('/signup', async (req, res, next) => {
   try {
-    console.log(
-      'this message indicates that we reached the signup route in server/auth/index.js'
-    )
-    console.log('req.bodyreq.body', req.body)
     const user = await User.create(req.body)
     req.login(user, err => (err ? next(err) : res.json(user)))
   } catch (err) {

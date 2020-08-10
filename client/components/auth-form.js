@@ -16,10 +16,6 @@ class AuthForm extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
-  componentDidMount() {
-    console.log('the value of props is now, on componentDidMount, ', this.state)
-  }
-
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
@@ -31,22 +27,13 @@ class AuthForm extends Component {
     this.setState({
       [event.target.name]: event.target.value
     })
-
-    console.log('handleSubmit in auth-form looks like this, ', this.state)
-    console.log(
-      'this.props.displayName looks like this ',
-      this.props.displayName
-    )
     // Login or Sign Up
 
     if (this.props.displayName === 'Login') {
-      console.log('we need to sign in ')
       this.props.login(this.state)
     } else if (this.props.displayName === 'Sign Up') {
       this.props.addUser(this.state)
     }
-
-    console.log('the value of props is now ', this.props)
   }
 
   render() {

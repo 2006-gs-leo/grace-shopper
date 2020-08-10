@@ -66,9 +66,6 @@ export class AddCar extends React.Component {
   // eslint-disable-next-line complexity
   render() {
     let userObject = this.props.reduxState.user.user
-    console.log(
-      userObject === undefined || Object.keys(userObject).length === 0
-    )
     if (userObject === undefined || Object.keys(userObject).length === 0) {
       userObject = 'none'
     } else {
@@ -92,168 +89,160 @@ export class AddCar extends React.Component {
               Welcome back, {userObject.firstName} {userObject.lastName} ({
                 userObject.email
               })
-              <div className="addCarForm">
-                <form onSubmit={this.handleSubmit}>
-                  <label htmlFor="cylinderCount">
-                    {![
-                      'all',
-                      '4-cylinder',
-                      '5-cylinder',
-                      '6-cylinder',
-                      '8-cylinder',
-                      '10-cylinder',
-                      '12-cylinder'
-                    ].includes(cylinderCount) ? (
-                      <span style={{color: 'red'}}>
-                        *needs to be one of all, 4-cylinder, 5-cylinder,
-                        6-cylinder, 8-cylinder, 10-cylinder, 12-cylinder
-                      </span>
-                    ) : (
-                      <span />
-                    )}
-                    Cylinder Count:
-                  </label>
-                  <input name="cylinderCount" onChange={this.mapInputToState} />
-                  <br />
-
-                  <label htmlFor="description">Description: </label>
-                  <textarea
-                    name="description"
-                    onChange={this.mapInputToState}
-                  />
-                  <br />
-
-                  <label htmlFor="drivetrain">
-                    {!['awd', 'rwd', 'fwd', '4wd'].includes(drivetrain) ? (
-                      <span style={{color: 'red'}}>
-                        *needs to be one of awd, rwd, fwd, 4wd
-                      </span>
-                    ) : (
-                      <span />
-                    )}
-                    Drive Train:
-                  </label>
-                  <input name="drivetrain" onChange={this.mapInputToState} />
-                  <br />
-
-                  <label htmlFor="exteriorColor">
-                    {![
-                      'Beige',
-                      'Black',
-                      'Blue',
-                      'Brown',
-                      'Gold',
-                      'Gray',
-                      'Green',
-                      'Orange',
-                      'Pink',
-                      'Purple',
-                      'Red',
-                      'Silver',
-                      'White',
-                      'Yellow',
-                      'Other'
-                    ].includes(exteriorColor) ? (
-                      <span style={{color: 'red'}}>
-                        *needs to be one of Beige, Black, Blue, Brown, Gold,
-                        Gray, Green, Orange, Pink, Purple, Red, Silver, White,
-                        Yellow, Other
-                      </span>
-                    ) : (
-                      <span />
-                    )}
-                    Exterior Color:
-                  </label>
-                  <input name="exteriorColor" onChange={this.mapInputToState} />
-                  <br />
-                  <label htmlFor="interiorColor">
-                    {![
-                      'Beige',
-                      'Black',
-                      'Blue',
-                      'Brown',
-                      'Gold',
-                      'Gray',
-                      'Green',
-                      'Orange',
-                      'Pink',
-                      'Purple',
-                      'Red',
-                      'Silver',
-                      'White',
-                      'Yellow',
-                      'Other'
-                    ].includes(interiorColor) ? (
-                      <span style={{color: 'red'}}>
-                        *needs to be one of Beige, Black, Blue, Brown, Gold,
-                        Gray, Green, Orange, Pink, Purple, Red, Silver, White,
-                        Yellow, Other
-                      </span>
-                    ) : (
-                      <span />
-                    )}
-                    Interior Color:
-                  </label>
-                  <input name="interiorColor" onChange={this.mapInputToState} />
-                  <br />
-                  <label htmlFor="make">Make: </label>
-                  <input name="make" onChange={this.mapInputToState} />
-                  <br />
-                  <label htmlFor="model">Model: </label>
-                  <input name="model" onChange={this.mapInputToState} />
-                  <br />
-                  <label htmlFor="mpg">
-                    {!(Number(mpg) == mpg) ? (
-                      <span style={{color: 'red'}}>
-                        *needs to be an integer
-                      </span>
-                    ) : (
-                      <span />
-                    )}
-                    MPG:
-                  </label>
-                  <input name="mpg" onChange={this.mapInputToState} />
-                  <br />
-                  <label htmlFor="price">Price: </label>
-                  <input name="price" onChange={this.mapInputToState} />
-                  <br />
-                  <label htmlFor="quantity">
-                    {quantity < 1 ? (
-                      <span style={{color: 'red'}}>
-                        *needs to be a minimum of 1
-                      </span>
-                    ) : (
-                      <span />
-                    )}
-                    Quantity:
-                  </label>
-                  <input name="quantity" onChange={this.mapInputToState} />
-                  <br />
-                  <label htmlFor="transmission">
-                    {!['manual', 'automatic'].includes(transmission) ? (
-                      <span style={{color: 'red'}}>
-                        *needs to be one of manual, automatic
-                      </span>
-                    ) : (
-                      <span />
-                    )}
-                    Transmission:
-                  </label>
-                  <input name="transmission" onChange={this.mapInputToState} />
-                  <br />
-                  <label htmlFor="vehicleYear">Vehicle Year: </label>
-                  <input name="vehicleYear" onChange={this.mapInputToState} />
-                  <br />
-
-                  <button type="button" onClick={this.handleSubmit}>
-                    Submit
-                  </button>
-                </form>
-              </div>
             </div>
           ) : (
+            // we can display two different things depending on whether the user is logged in
             <div>Need to log in</div>
           )}
+        </div>
+        <div className="addCarForm">
+          <form onSubmit={this.handleSubmit}>
+            <label htmlFor="cylinderCount">
+              {![
+                'all',
+                '4-cylinder',
+                '5-cylinder',
+                '6-cylinder',
+                '8-cylinder',
+                '10-cylinder',
+                '12-cylinder'
+              ].includes(cylinderCount) ? (
+                <span style={{color: 'red'}}>
+                  *needs to be one of all, 4-cylinder, 5-cylinder, 6-cylinder,
+                  8-cylinder, 10-cylinder, 12-cylinder
+                </span>
+              ) : (
+                <span />
+              )}
+              Cylinder Count:
+            </label>
+            <input name="cylinderCount" onChange={this.mapInputToState} />
+            <br />
+
+            <label htmlFor="description">Description: </label>
+            <textarea name="description" onChange={this.mapInputToState} />
+            <br />
+
+            <label htmlFor="drivetrain">
+              {!['awd', 'rwd', 'fwd', '4wd'].includes(drivetrain) ? (
+                <span style={{color: 'red'}}>
+                  *needs to be one of awd, rwd, fwd, 4wd
+                </span>
+              ) : (
+                <span />
+              )}
+              Drive Train:
+            </label>
+            <input name="drivetrain" onChange={this.mapInputToState} />
+            <br />
+
+            <label htmlFor="exteriorColor">
+              {![
+                'Beige',
+                'Black',
+                'Blue',
+                'Brown',
+                'Gold',
+                'Gray',
+                'Green',
+                'Orange',
+                'Pink',
+                'Purple',
+                'Red',
+                'Silver',
+                'White',
+                'Yellow',
+                'Other'
+              ].includes(exteriorColor) ? (
+                <span style={{color: 'red'}}>
+                  *needs to be one of Beige, Black, Blue, Brown, Gold, Gray,
+                  Green, Orange, Pink, Purple, Red, Silver, White, Yellow, Other
+                </span>
+              ) : (
+                <span />
+              )}
+              Exterior Color:
+            </label>
+            <input name="exteriorColor" onChange={this.mapInputToState} />
+            <br />
+            <label htmlFor="interiorColor">
+              {![
+                'Beige',
+                'Black',
+                'Blue',
+                'Brown',
+                'Gold',
+                'Gray',
+                'Green',
+                'Orange',
+                'Pink',
+                'Purple',
+                'Red',
+                'Silver',
+                'White',
+                'Yellow',
+                'Other'
+              ].includes(interiorColor) ? (
+                <span style={{color: 'red'}}>
+                  *needs to be one of Beige, Black, Blue, Brown, Gold, Gray,
+                  Green, Orange, Pink, Purple, Red, Silver, White, Yellow, Other
+                </span>
+              ) : (
+                <span />
+              )}
+              Interior Color:
+            </label>
+            <input name="interiorColor" onChange={this.mapInputToState} />
+            <br />
+            <label htmlFor="make">Make: </label>
+            <input name="make" onChange={this.mapInputToState} />
+            <br />
+            <label htmlFor="model">Model: </label>
+            <input name="model" onChange={this.mapInputToState} />
+            <br />
+            <label htmlFor="mpg">
+              {!(Number(mpg) == mpg) ? (
+                <span style={{color: 'red'}}>*needs to be an integer</span>
+              ) : (
+                <span />
+              )}
+              MPG:
+            </label>
+            <input name="mpg" onChange={this.mapInputToState} />
+            <br />
+            <label htmlFor="price">Price: </label>
+            <input name="price" onChange={this.mapInputToState} />
+            <br />
+            <label htmlFor="quantity">
+              {quantity < 1 ? (
+                <span style={{color: 'red'}}>*needs to be a minimum of 1</span>
+              ) : (
+                <span />
+              )}
+              Quantity:
+            </label>
+            <input name="quantity" onChange={this.mapInputToState} />
+            <br />
+            <label htmlFor="transmission">
+              {!['manual', 'automatic'].includes(transmission) ? (
+                <span style={{color: 'red'}}>
+                  *needs to be one of manual, automatic
+                </span>
+              ) : (
+                <span />
+              )}
+              Transmission:
+            </label>
+            <input name="transmission" onChange={this.mapInputToState} />
+            <br />
+            <label htmlFor="vehicleYear">Vehicle Year: </label>
+            <input name="vehicleYear" onChange={this.mapInputToState} />
+            <br />
+
+            <button type="button" onClick={this.handleSubmit}>
+              Submit
+            </button>
+          </form>
         </div>
       </div>
     )

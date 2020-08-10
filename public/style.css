@@ -1,6 +1,6 @@
 body {
-  font-family: sans-serif;
-  background-color: rgb(255, 252, 250);
+  background: rgba(206, 206, 206, 0.267);
+  font-family: 'Georgia', sans-serif;
 }
 
 a {
@@ -626,14 +626,10 @@ a:hover {
   background-clip: text;
   font-weight: bolder;
   font-size: 7.5em;
-  width: 70%;
+  width: 60%;
   margin: auto;
   text-align: center;
   border-style: outset;
-}
-
-body {
-  background: rgba(68, 68, 68, 0.267);
 }
 
 .aboutUsText {
@@ -663,10 +659,6 @@ body {
   -moz-transform: rotateY(-10deg);
   -ms-transform: rotateY(-10deg);
   transform: rotateY(-10deg) rotateX(-10deg);
-}
-
-body {
-  font-family: 'Georgia', serif;
 }
 
 .howItWorksStyled {
@@ -702,4 +694,18 @@ body {
 }
 .singleLetter:hover:after {
   transform: rotateY(20deg) skew(20deg, 20deg);
+}
+
+.imageBehindTextContact {
+  background: url(https://www.paymentvision.com/wp-content/uploads/2019/06/contact-us.jpg);
+  background-size: 35px 15px;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-weight: bolder;
+  font-size: 3.5em;
+  width: 60%;
+  margin: auto;
+  text-align: center;
+  border-style: outset;
 }

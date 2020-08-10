@@ -29,14 +29,12 @@ export class MainPage extends React.Component {
 
   handleSearch(e) {
     let searchValue = e.target.value
-    console.log('the search value is ', searchValue)
     this.setState({
       // re-renders after changing state
       cars: this.props.cars.filter(element => {
         return element.make === searchValue
       })
     })
-    console.log('this.state.cars is ', this.state.cars)
   }
 
   render() {
@@ -108,7 +106,7 @@ export class MainPage extends React.Component {
               )
             })
           ) : (
-            <h1>No Cars Available</h1>
+            <h1>No Cars with the Criteria Available</h1>
           )}
         </div>
 
