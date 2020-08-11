@@ -15,7 +15,6 @@ export default class CheckOut extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    console.log('THE SUBMIT BUTTON HAS BEEN CLICKED ON CHECKOUT')
   }
   render() {
     return (

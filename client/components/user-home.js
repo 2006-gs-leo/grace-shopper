@@ -60,15 +60,21 @@ const userOwnedCars = [
 export const UserHome = props => {
   // const [user, setUser] = useState({ user: [] });
   const {email, user} = props
-  console.log('useruseruser', user)
 
   return (
     <div>
       <div className="userProfilecard">
-        <h3>Welcome, {email}</h3>
+        <h3>
+          Welcome,
+          <div>
+            {user.firstName} {user.lastName}
+          </div>
+        </h3>
         <img src="JDBCARS_LOGO.png" alt="John" />
-        <h1>user.name</h1>
-        <p className="userProfiletitle">user.something</p>
+        <h1>{user.name}</h1>
+        <div className="userProfiletitle">
+          <img src={user.image} />{' '}
+        </div>
         <p>user.CarsOwned</p>
         {userOwnedCars.map(car => (
           <div key={car.id} className="singleCarDiv">

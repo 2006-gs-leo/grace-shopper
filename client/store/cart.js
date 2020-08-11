@@ -52,7 +52,6 @@ export const addItem = item => async dispatch => {
 
 export const deleteItem = itemId => async dispatch => {
   try {
-    console.log(itemId)
     const {data: updatedCart} = await axios.delete(
       '/api/users/cart/edit',
       itemId
@@ -65,7 +64,6 @@ export const deleteItem = itemId => async dispatch => {
 
 export const updateItemQty = (itemId, itemQty) => async dispatch => {
   try {
-    console.log(itemId, itemQty)
     const {data: updatedCart} = await axios.put('/api/users/cart/edit', {
       itemId,
       itemQty
@@ -73,6 +71,15 @@ export const updateItemQty = (itemId, itemQty) => async dispatch => {
     dispatch(updateItem(updatedCart))
   } catch (error) {
     console.log('ERROR IN Update Item Thunk', error)
+  }
+}
+
+export const saveCart = (userEmail, data) => async dispatch => {
+  try {
+    const response = await axios.post('/api/cart', {userEmail, data})
+    dispatch(addNewItem(response.data))
+  } catch (error) {
+    console.log(error)
   }
 }
 

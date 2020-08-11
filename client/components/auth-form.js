@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
 import {Link} from 'react-router-dom'
-import {addNewUser} from '../store/user'
 
 /**
  * COMPONENT
@@ -22,20 +21,26 @@ class AuthForm extends Component {
     })
   }
 
-  handleSubmit() {
+  handleSubmit(event) {
+    event.preventDefault()
     this.setState({
       [event.target.name]: event.target.value
     })
+    // Login or Sign Up
 
-    this.props.addUser(this.state)
+    if (this.props.displayName === 'Login') {
+      this.props.login(this.state)
+    } else if (this.props.displayName === 'Sign Up') {
+      this.props.addUser(this.state)
+    }
   }
 
   render() {
-    const {name, displayName, handleSubmit, error} = this.props
+    const {name, displayName, handleSubmit, error, user} = this.props
 
     return (
       <div className="authFormWhole">
-        <form className="form-signin" onSubmit={this.handleSubmit} name={name}>
+        <form className="form-signin" onSubmit={handleSubmit} name={name}>
           <div className="emailForm">
             <img src="JDBCARS_LOGO.png" alt="" />
             {displayName === 'Sign Up' ? (
@@ -55,7 +60,7 @@ class AuthForm extends Component {
             </p>
           </div>
           <div className="emailForm">
-            {/* {displayName === 'Sign Up' && (
+            {displayName === 'Sign Up' && (
               <div className="emailForm">
                 <label className="form-signin" htmlFor="firstName" />
                 <input
@@ -73,25 +78,7 @@ class AuthForm extends Component {
                   type="text"
                 />
               </div>
-            )} */}
-
-            <div className="emailForm">
-              <label className="form-signin" htmlFor="firstName" />
-              <input
-                onChange={this.handleChange}
-                placeholder="First Name"
-                name="firstName"
-                type="text"
-              />
-
-              <label className="form-signin" htmlFor="lastName" />
-              <input
-                onChange={this.handleChange}
-                placeholder="Last Name"
-                name="lastName"
-                type="text"
-              />
-            </div>
+            )}
 
             <label className="form-signin" htmlFor="email" />
             <input
@@ -135,7 +122,8 @@ const mapLogin = state => {
   return {
     name: 'login',
     displayName: 'Login',
-    error: state.user.error
+    error: state.user.error,
+    user: state.user
   }
 }
 
@@ -143,7 +131,8 @@ const mapSignup = state => {
   return {
     name: 'signup',
     displayName: 'Sign Up',
-    error: state.user.error
+    error: state.user.error,
+    user: state.user
   }
 }
 
@@ -159,7 +148,8 @@ const mapDispatch = dispatch => {
       // dispatch(auth(email, password, firstName, lastName, formName))
       dispatch(auth(email, password, formName))
     },
-    addUser: user => dispatch(addNewUser(user))
+    addUser: user => dispatch(addNewUser(user)),
+    login: user => dispatch(login(user))
   }
 }
 

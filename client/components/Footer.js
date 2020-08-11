@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 export default function Footer() {
   return (
@@ -148,9 +149,47 @@ export default function Footer() {
           <a className="socialmediaicons" href="https://www.instagram.com/">
             <img className="socialmediaicons" src="instagram-logo-png.png" />
           </a>
+          <span className="botInfoAtags">|</span>
         </div>
-        <div className="sc-hSdWYo hckRsN sc-bwzfXH lcIaHP">
+        <div className="bottNavthingy">
           Copyright © 2020 JDB. All Rights Reserved.
+          <div>
+            <a href="/TermsofUseandPrivacyPolicy" target="_self" rel="">
+              Terms of Use and Privacy Policy
+            </a>
+            <span className="botInfoAtags">|</span>
+
+            <a
+              className="botInfoAtags"
+              href="/FinancialPrivacyPolicy"
+              target="_self"
+              rel=""
+            >
+              Financial Privacy Policy
+            </a>
+            <span className="botInfoAtags">|</span>
+            <a
+              href="/DoNotSellMyInfo"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Do Not Sell My Info
+            </a>
+            <span className="botInfoAtags">|</span>
+            <a href="/CodeofConduct" target="_blank" rel="noopener noreferrer">
+              Code of Conduct
+            </a>
+            <span className="botInfoAtags">|</span>
+            <div>
+              <a href="/Accessibility" target="_self" rel="">
+                Accessibility
+              </a>
+              <span className="botInfoAtags">|</span>
+              <a href="/SiteMap" target="_self" rel="">
+                Site Map
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
