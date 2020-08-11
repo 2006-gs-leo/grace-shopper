@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
 import {Link} from 'react-router-dom'
-// import {addNewUser} from '../store/user'
 
 /**
  * COMPONENT
@@ -22,16 +21,22 @@ class AuthForm extends Component {
     })
   }
 
-  handleSubmit() {
+  handleSubmit(event) {
+    event.preventDefault()
     this.setState({
       [event.target.name]: event.target.value
     })
+    // Login or Sign Up
 
-    this.props.addUser(this.state)
+    if (this.props.displayName === 'Login') {
+      this.props.login(this.state)
+    } else if (this.props.displayName === 'Sign Up') {
+      this.props.addUser(this.state)
+    }
   }
 
   render() {
-    const {name, displayName, handleSubmit, error} = this.props
+    const {name, displayName, handleSubmit, error, user} = this.props
 
     return (
       <div className="authFormWhole">
@@ -117,7 +122,8 @@ const mapLogin = state => {
   return {
     name: 'login',
     displayName: 'Login',
-    error: state.user.error
+    error: state.user.error,
+    user: state.user
   }
 }
 
@@ -125,7 +131,8 @@ const mapSignup = state => {
   return {
     name: 'signup',
     displayName: 'Sign Up',
-    error: state.user.error
+    error: state.user.error,
+    user: state.user
   }
 }
 
@@ -141,7 +148,8 @@ const mapDispatch = dispatch => {
       // dispatch(auth(email, password, firstName, lastName, formName))
       dispatch(auth(email, password, formName))
     },
-    addUser: user => dispatch(addNewUser(user))
+    addUser: user => dispatch(addNewUser(user)),
+    login: user => dispatch(login(user))
   }
 }
 

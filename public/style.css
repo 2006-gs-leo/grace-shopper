@@ -1,6 +1,6 @@
 body {
-  font-family: sans-serif;
-  background-color: rgb(255, 252, 250);
+  background: rgba(206, 206, 206, 0.267);
+  font-family: 'Georgia', sans-serif;
 }
 
 a {
@@ -51,6 +51,12 @@ form div {
   justify-content: flex-end;
   background-color: #d9d9d9;
   height: 2em;
+}
+
+.navbarHeaderInfo > div {
+  margin-right: 20%;
+  border-style: groove;
+  background-color: rgba(255, 166, 0, 0.479);
 }
 
 .AnchnavbarHeaderInfo {
@@ -275,14 +281,9 @@ form div {
   position: absolute;
 }
 
-.singleViewNavbar.active {
-  /* transform: translateY(-6em); */
-}
-
 .singleViewNavbar a {
   font-size: 1.2em;
   border-radius: 2vw;
-  /* transition: color 0s, background-color 0s; */
 }
 .singleViewNavbar a:hover {
   color: #00e1ff;
@@ -508,7 +509,7 @@ form div {
   cursor: pointer;
   padding: 0.5em 1em;
   width: 50%;
-  letter-spacing: 0.15em;
+  singlesingleletter-spacing: 0.15em;
   font-weight: bolder;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -542,7 +543,7 @@ form div {
   cursor: pointer;
   padding: 0.5em 1em;
   width: 90%;
-  letter-spacing: 0.15em;
+  singlesingleletter-spacing: 0.15em;
   font-weight: bolder;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -627,3 +628,95 @@ a:hover {
 }
 
 /*  Main products page list */
+
+.imageBehindText {
+  background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Nautical_star.svg/1200px-Nautical_star.svg.png);
+  background-size: 5px 5px;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-weight: bolder;
+  font-size: 7.5em;
+  width: 60%;
+  margin: auto;
+  text-align: center;
+  border-style: outset;
+}
+
+.aboutUsText {
+  margin: auto;
+  text-indent: 5%;
+  font: 75% georgia, sans-serif;
+  text-align: justify;
+  border-style: outset;
+  width: 50%;
+  overflow: hidden;
+  margin-bottom: 25%;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+}
+
+.aboutUsText .aboutUsFooter {
+  text-align: right;
+  font-weight: bolder;
+  font-style: italic;
+  color: orange;
+}
+
+.aboutUsText:hover {
+  -webkit-transform: rotateY(-10deg);
+  -moz-transform: rotateY(-10deg);
+  -ms-transform: rotateY(-10deg);
+  transform: rotateY(-10deg) rotateX(-10deg);
+}
+
+.howItWorksStyled {
+  border-style: outset;
+  width: 60%;
+  margin: auto;
+  text-align: center;
+}
+.singleLetter {
+  background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Nautical_star.svg/1200px-Nautical_star.svg.png);
+  background-size: 5px 5px;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-weight: bolder;
+  font-size: 5em;
+}
+.singleLetter:before,
+.singleLetter:after {
+  position: absolute;
+  content: attr(value);
+  transform-origin: top left;
+  transition: all 0.5s ease-out;
+}
+
+.singleLetter:before {
+  text-shadow: -0.01em 0 0.01em rgba(255, 179, 92, 0.5),
+    0.01em 0 0.01em rgba(77, 64, 255, 0.507);
+}
+
+.singleLetter:hover:before {
+  transform: rotateY(20deg) rotateZ(20deg);
+}
+.singleLetter:hover:after {
+  transform: rotateY(20deg) skew(20deg, 20deg);
+}
+
+.imageBehindTextContact {
+  background: url(https://www.paymentvision.com/wp-content/uploads/2019/06/contact-us.jpg);
+  background-size: 35px 15px;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-weight: bolder;
+  font-size: 3.5em;
+  width: 60%;
+  margin: auto;
+  text-align: center;
+  border-style: outset;
+}

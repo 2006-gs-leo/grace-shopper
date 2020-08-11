@@ -15,6 +15,7 @@ const defaultUser = {}
 /**
  * ACTION CREATORS
  */
+
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
 
@@ -29,6 +30,39 @@ export const me = () => async dispatch => {
     console.error(err)
   }
 }
+
+// export const fetchMe = () => {
+//   return async dispatch => {
+//     dispatch(setFetchingStatus(true))
+//     try {
+//       const response = await axios.get('/auth/me')
+//       dispatch(getUser(response.data))
+//     } catch (error) {
+//       console.error(error)
+//     } finally {
+//       dispatch(setFetchingStatus(false))
+//     }
+//   }
+// }
+// export const login = credentials => {
+//   return async dispatch => {
+//     try {
+//       const response = await axios.put('/auth/login', credentials) // this is where we actually make the axios.put request, to /auth/login
+//       dispatch(getUser(response.config.data))
+//     } catch (error) {
+//       console.error(error)
+//     }
+//   }
+// }
+
+// export const addNewUser = user => async dispatch => {
+//   try {
+//     const {data} = await axios.post('/api/users', user)
+//     dispatch(addUser(data))
+//   } catch (err) {
+//     console.error(err)
+//   }
+// }
 
 export const auth = (email, password, method) => async dispatch => {
   let res
@@ -45,7 +79,6 @@ export const auth = (email, password, method) => async dispatch => {
     console.error(dispatchOrHistoryErr)
   }
 }
-
 export const logout = () => async dispatch => {
   try {
     await axios.post('/auth/logout')

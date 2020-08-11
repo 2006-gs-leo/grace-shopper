@@ -23,8 +23,6 @@ export default class CartItem extends Component {
 
   render() {
     const {make, model, vehicleYear, price, id} = this.props.item
-
-    console.log('this.props CART ITEM', this.props)
     return (
       <div>
         <div key={id} className="singleItemDiv">
