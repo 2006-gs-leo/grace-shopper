@@ -25,16 +25,28 @@ const User = db.define('user', {
       isEmail: true
     }
   },
-  image: {
-    type: Sequelize.STRING,
-    defaultValue: 'https://lumiere-a.akamaihd.net/v1/images/image_65c0f5f2.jpeg'
-  },
   password: {
     type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      len: [8, 50]
+    },
     // Making `.password` act like a func hides it when serializing to JSON.
     // This is a hack to get around Sequelize's lack of a "private" option.
     get() {
       return () => this.getDataValue('password')
+    }
+  },
+  image: {
+    type: Sequelize.STRING,
+    defaultValue: 'https://lumiere-a.akamaihd.net/v1/images/image_65c0f5f2.jpeg'
+  },
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+    validate: {
+      isIn: [[true, false]]
     }
   }
   // salt: {
@@ -49,8 +61,6 @@ const User = db.define('user', {
   //   type: Sequelize.STRING
   // }
 })
-
-module.exports = User
 
 /**
  * instanceMethods
@@ -92,3 +102,4 @@ User.prototype.correctPassword = function(candidatePwd) {
 // User.beforeBulkCreate(users => {
 //   users.forEach(setSaltAndPassword)
 // })
+module.exports = User
