@@ -55,7 +55,7 @@ class AuthForm extends Component {
             </p>
           </div>
           <div className="emailForm">
-            {/* {displayName === 'Sign Up' && (
+            {displayName === 'Sign Up' && (
               <div className="emailForm">
                 <label className="form-signin" htmlFor="firstName" />
                 <input
@@ -73,25 +73,7 @@ class AuthForm extends Component {
                   type="text"
                 />
               </div>
-            )} */}
-
-            <div className="emailForm">
-              <label className="form-signin" htmlFor="firstName" />
-              <input
-                onChange={this.handleChange}
-                placeholder="First Name"
-                name="firstName"
-                type="text"
-              />
-
-              <label className="form-signin" htmlFor="lastName" />
-              <input
-                onChange={this.handleChange}
-                placeholder="Last Name"
-                name="lastName"
-                type="text"
-              />
-            </div>
+            )}
 
             <label className="form-signin" htmlFor="email" />
             <input
