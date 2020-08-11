@@ -86,9 +86,8 @@ export class AddCar extends React.Component {
         <div>
           {userObject.firstName ? (
             <div>
-              Welcome back, {userObject.firstName} {userObject.lastName} ({
-                userObject.email
-              })
+              Welcome back, {userObject.firstName} {userObject.lastName} (
+              {userObject.email})
             </div>
           ) : (
             // we can display two different things depending on whether the user is logged in

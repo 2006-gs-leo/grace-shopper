@@ -20,9 +20,8 @@ class AboutUs extends React.Component {
         <div>
           {userObject.firstName ? (
             <div>
-              Welcome back, {userObject.firstName} {userObject.lastName} ({
-                userObject.email
-              })
+              Welcome back, {userObject.firstName} {userObject.lastName} (
+              {userObject.email})
             </div>
           ) : (
             <div>Need to log in</div>

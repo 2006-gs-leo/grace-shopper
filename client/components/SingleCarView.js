@@ -140,9 +140,7 @@ export class SingleCarView extends React.Component {
           </a>
         </div>
         <div className="singleViewOverlay">
-          <div>{`${this.props.cars.SingleCar.make} ${
-            this.props.cars.SingleCar.model
-          }`}</div>
+          <div>{`${this.props.cars.SingleCar.make} ${this.props.cars.SingleCar.model}`}</div>
           <div>
             Price:
             <br />-{`${this.props.cars.SingleCar.price}`}-
