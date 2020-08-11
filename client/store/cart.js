@@ -41,9 +41,11 @@ export const fetchCart = () => async dispatch => {
   }
 }
 
-export const addItem = item => async dispatch => {
+export const addItem = (item, userId) => async dispatch => {
   try {
-    const {data} = await axios.put('/api/users/:userId/cart', item)
+    console.log('itemitemitem THUNK', item)
+    console.log('userIduserIduserIduserId THUNK', userId)
+    const {data} = await axios.post(`/api/users/${userId}/orders`, item)
     dispatch(addNewItem(data))
   } catch (error) {
     console.log('ERROR IN ADD ITEM THUNK', error)

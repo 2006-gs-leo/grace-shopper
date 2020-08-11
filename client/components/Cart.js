@@ -132,11 +132,7 @@ class Cart extends Component {
           </div>
         </footer>
         <div>
-          <button
-            className="checkoutbtn"
-            type="submit"
-            onClick={() => <CheckOut />}
-          >
+          <button className="checkoutbtn" type="submit">
             checkout
           </button>
         </div>

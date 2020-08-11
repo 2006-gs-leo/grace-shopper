@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {fetchSingleCarData, editSingleCarData} from '../store/SingleCar'
+import {addItem} from '../store/cart'
 import EditCar from './EditCar'
 
 export class SingleCarView extends React.Component {
@@ -34,11 +35,18 @@ export class SingleCarView extends React.Component {
     this.props.fetchCar(this.props.match.params.carId)
   }
 
-  addToLocalStorage() {
+  async addToLocalStorage() {
+    console.log('this.props.user.id', this.props.user.id)
     localStorage.setItem(
       `${this.props.match.params.carId}`,
       JSON.stringify(this.props.cars.SingleCar)
     )
+    const carToAddToCart = {
+      carId: this.props.cars.SingleCar.id,
+      qty: 1,
+      price: this.props.cars.SingleCar.price
+    }
+    await this.props.addItem(carToAddToCart, this.props.user.id)
   }
 
   scrollToBottom() {
@@ -261,7 +269,7 @@ export class SingleCarView extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {cars: state}
+  return {cars: state, user: state.user}
 }
 
 const mapDispatchToProps = dispatch => {
@@ -271,6 +279,9 @@ const mapDispatchToProps = dispatch => {
     },
     editCar: (carId, edits) => {
       dispatch(editSingleCarData(carId, edits))
+    },
+    addItem: (item, userId) => {
+      dispatch(addItem(item, userId))
     }
   }
 }
