@@ -70,19 +70,13 @@ class EditCar extends React.Component {
       transmission,
       vehicleYear
     } = this.props
-
-    let userObject = this.props.reduxState.user.user
-    if (userObject === undefined || Object.keys(userObject).length === 0) {
-      userObject = 'none'
-    } else {
-      userObject = JSON.parse(this.props.reduxState.user.user)
-    }
     return (
       <div>
-        {userObject.firstName ? (
+        {this.props.reduxState.user.firstName ? (
           <div>
-            Welcome back, {userObject.firstName} {userObject.lastName} (
-            {userObject.email})
+            Welcome back, {this.props.reduxState.user.firstName}{' '}
+            {this.props.reduxState.user.lastName} (
+            {this.props.reduxState.user.email})
           </div>
         ) : (
           // we can display two different things depending on whether the user is logged in

@@ -3,8 +3,19 @@ const {Car, CarsAndOrders, Order, Users, Cart} = require('../db/models')
 
 module.exports = router
 
+const usersOnly = (req, res, next) => {
+  if (!req.user) {
+    // if req.user is undefined.  Clear cookies to log out and test this one.
+    const err = new Error('you need to log in to do this!')
+    err.status = 401
+    return next(err)
+  } else {
+    next()
+  }
+}
+
 // change the qty in the cart
-router.put('/edit', async (req, res, next) => {
+router.put('/edit', usersOnly, async (req, res, next) => {
   try {
     const {itemId, itemQty} = req.body
 
@@ -14,7 +25,7 @@ router.put('/edit', async (req, res, next) => {
   }
 })
 
-router.delete('/edit', async (req, res, next) => {
+router.delete('/edit', usersOnly, async (req, res, next) => {
   try {
     const {itemId, itemQty} = req.body
 
@@ -24,10 +35,8 @@ router.delete('/edit', async (req, res, next) => {
   }
 })
 
-router.post('/', async (req, res, next) => {
+router.post('/', usersOnly, async (req, res, next) => {
   try {
-    console.log('within the post route, the req.body is ', req.body)
-    console.log(Object.keys(req.body)[0], Object.values(req.body)[0])
     const newCart = await Cart.create({
       userEmail: Object.keys(req.body)[0],
       data: Object.values(req.body)[0]

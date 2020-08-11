@@ -65,13 +65,6 @@ export class AddCar extends React.Component {
 
   // eslint-disable-next-line complexity
   render() {
-    let userObject = this.props.reduxState.user.user
-    if (userObject === undefined || Object.keys(userObject).length === 0) {
-      userObject = 'none'
-    } else {
-      userObject = JSON.parse(this.props.reduxState.user.user)
-    }
-
     let {
       cylinderCount,
       drivetrain,
@@ -84,14 +77,15 @@ export class AddCar extends React.Component {
     return (
       <div>
         <div>
-          {userObject.firstName ? (
+          {this.props.reduxState.user.firstName ? (
             <div>
-              Welcome back, {userObject.firstName} {userObject.lastName} (
-              {userObject.email})
+              Welcome back, {this.props.reduxState.user.firstName}{' '}
+              {this.props.reduxState.user.lastName} (
+              {this.props.reduxState.user.email})
             </div>
           ) : (
             // we can display two different things depending on whether the user is logged in
-            <div>Need to log in</div>
+            <div> Need to log in </div>
           )}
         </div>
         <div className="addCarForm">
