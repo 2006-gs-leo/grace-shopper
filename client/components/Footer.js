@@ -123,7 +123,7 @@ export default function Footer() {
           BLOG
         </a>
         <span className="seperationBar">|</span>
-        <a lassName="seperationBar" href="/patents" target="_self" rel="">
+        <a className="seperationBar" href="/patents" target="_self" rel="">
           PATENTS
         </a>
         <span className="seperationBar">|</span>
