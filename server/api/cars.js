@@ -5,7 +5,7 @@ const {Car} = require('../db/models')
 const usersOnly = (req, res, next) => {
   if (!req.user) {
     // if req.user is undefined.  Clear cookies to log out and test this one.
-    const err = new Error('you need to log in as an admin to do this!')
+    const err = new Error('you need to log in to do this!')
     err.status = 401
     return next(err)
   } else {
@@ -56,7 +56,7 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-router.post('/', usersOnly, adminsOnly, async (req, res, next) => {
+router.post('/', usersOnly, async (req, res, next) => {
   try {
     const car = await Car.create(req.body)
     res.json(car)
