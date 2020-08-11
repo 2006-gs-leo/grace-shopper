@@ -72,9 +72,9 @@ export const UserHome = props => {
         </h3>
         <img src="JDBCARS_LOGO.png" alt="John" />
         <h1>{user.name}</h1>
-        <p className="userProfiletitle">
+        <div className="userProfiletitle">
           <img src={user.image} />{' '}
-        </p>
+        </div>
         <p>user.CarsOwned</p>
         {userOwnedCars.map(car => (
           <div key={car.id} className="singleCarDiv">
