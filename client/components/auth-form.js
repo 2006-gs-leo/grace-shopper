@@ -46,7 +46,7 @@ class AuthForm extends Component {
             {displayName === 'Sign Up' ? (
               <h3 className="h3 mb-3 font-weight-normal">Please sign up</h3>
             ) : (
-              <h3 className="h3 mb-3 font-weight-normal">Please sign in</h3>
+              <h3 className="h3 mb-3 font-weight-normal">Please Log in</h3>
             )}
 
             <p>
@@ -60,7 +60,7 @@ class AuthForm extends Component {
             </p>
           </div>
           <div className="emailForm">
-            {displayName === 'Sign Up' && (
+            {displayName === 'Sign Up' ? (
               <div className="emailForm">
                 <label className="form-signin" htmlFor="firstName" />
                 <input
@@ -77,24 +77,41 @@ class AuthForm extends Component {
                   name="lastName"
                   type="text"
                 />
+                <label className="form-signin" htmlFor="email" />
+                <input
+                  onChange={this.handleChange}
+                  placeholder="Email address"
+                  name="email"
+                  type="text"
+                />
+
+                <label className="form-signin" htmlFor="password" />
+                <input
+                  onChange={this.handleChange}
+                  placeholder="Password"
+                  name="password"
+                  type="password"
+                />
+              </div>
+            ) : (
+              <div className="emailForm">
+                <label className="form-signin" htmlFor="email" />
+                <input
+                  onChange={this.handleChange}
+                  placeholder="Email address"
+                  name="email"
+                  type="text"
+                />
+
+                <label className="form-signin" htmlFor="password" />
+                <input
+                  onChange={this.handleChange}
+                  placeholder="Password"
+                  name="password"
+                  type="password"
+                />
               </div>
             )}
-
-            <label className="form-signin" htmlFor="email" />
-            <input
-              onChange={this.handleChange}
-              placeholder="Email address"
-              name="email"
-              type="text"
-            />
-
-            <label className="form-signin" htmlFor="password" />
-            <input
-              onChange={this.handleChange}
-              placeholder="Password"
-              name="password"
-              type="password"
-            />
           </div>
           <div className="emailForm">
             <button type="submit">{displayName}</button>
@@ -143,10 +160,10 @@ const mapDispatch = dispatch => {
       const formName = evt.target.name
       const email = evt.target.email.value
       const password = evt.target.password.value
-      // const firstName = evt.target.firstName.value
-      // const lastName = evt.target.lastName.value
-      // dispatch(auth(email, password, firstName, lastName, formName))
-      dispatch(auth(email, password, formName))
+      const firstName = evt.target.firstName.value
+      const lastName = evt.target.lastName.value
+      dispatch(auth(email, password, firstName, lastName, formName))
+      // dispatch(auth(email, password, formName))
     },
     addUser: user => dispatch(addNewUser(user)),
     login: user => dispatch(login(user))
