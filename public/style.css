@@ -616,11 +616,14 @@ a:hover {
   flex-flow: row wrap;
   justify-content: space-around;
   text-align: center;
+  width: 100%;
+  height: 100%;
 }
 
 .carListItem {
   flex-grow: 1;
-  flex-basis: 33%;
+  flex-basis: 20%;
+  padding: 1rem;
 }
 
 .carListItem:hover {
