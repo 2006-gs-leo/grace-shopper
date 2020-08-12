@@ -85,7 +85,7 @@ class AboutUs extends React.Component {
               authentication; thank you for your feedback.
               <br />
               <br />
-              <div className="aboutUsFooter">-JDB</div>
+              <div className="aboutUsFooter">-Jake, Dean and Bobby</div>
             </div>
           </div>
         </div>
