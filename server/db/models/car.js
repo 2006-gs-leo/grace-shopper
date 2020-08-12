@@ -2,6 +2,20 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const Car = db.define('car', {
+  highlight1: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  highlight2: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
   make: {
     type: Sequelize.STRING,
     allowNull: false,

@@ -18,7 +18,9 @@ class EditCar extends React.Component {
       price: null,
       quantity: null,
       transmission: '',
-      vehicleYear: null
+      vehicleYear: null,
+      highlight1: '',
+      highlight2: ''
     }
   }
   componentDidMount() {
@@ -35,7 +37,9 @@ class EditCar extends React.Component {
       price,
       quantity,
       transmission,
-      vehicleYear
+      vehicleYear,
+      highlight1,
+      highlight2
     } = this.props
     this.setState({
       cylinderCount,
@@ -50,7 +54,9 @@ class EditCar extends React.Component {
       price,
       quantity,
       transmission,
-      vehicleYear
+      vehicleYear,
+      highlight1,
+      highlight2
     })
   }
   // eslint-disable-next-line complexity
@@ -68,25 +74,23 @@ class EditCar extends React.Component {
       price,
       quantity,
       transmission,
-      vehicleYear
+      vehicleYear,
+      highlight1,
+      highlight2
     } = this.props
-
-    let userObject = this.props.reduxState.user.user
-    if (userObject === undefined || Object.keys(userObject).length === 0) {
-      userObject = 'none'
-    } else {
-      userObject = JSON.parse(this.props.reduxState.user.user)
-    }
     return (
       <div>
-        {userObject.firstName ? (
+        {this.props.reduxState.user.isAdmin ? (
           <div>
-            Welcome back, {userObject.firstName} {userObject.lastName} (
-            {userObject.email})
+            Welcome back, {this.props.reduxState.user.firstName}{' '}
+            {this.props.reduxState.user.lastName} (
+            {this.props.reduxState.user.email})
           </div>
         ) : (
           // we can display two different things depending on whether the user is logged in
-          <div> Need to log in </div>
+          <span style={{color: 'red'}}>
+            *need to log in as an admin to edit cars
+          </span>
         )}
 
         <div className=".addForm">
@@ -273,6 +277,20 @@ class EditCar extends React.Component {
             <input
               name="vehicleYear"
               value={vehicleYear}
+              onChange={this.props.mapInputToState}
+            />
+            <br />
+            <label htmlFor="highlight1">Highlight 1: </label>
+            <input
+              name="highlight1"
+              value={highlight1}
+              onChange={this.props.mapInputToState}
+            />
+            <br />
+            <label htmlFor="highlight2">Highlight 2: </label>
+            <input
+              name="highlight2"
+              value={highlight2}
               onChange={this.props.mapInputToState}
             />
             <br />

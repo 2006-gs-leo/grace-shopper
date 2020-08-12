@@ -21,7 +21,9 @@ export class SingleCarView extends React.Component {
       price: null,
       quantity: null,
       transmission: '',
-      vehicleYear: null
+      vehicleYear: null,
+      highlight1: '',
+      highlight2: ''
     }
     this.scrollToBottom = this.scrollToBottom.bind(this)
     this.showEditForm = this.showEditForm.bind(this)
@@ -64,7 +66,9 @@ export class SingleCarView extends React.Component {
       price,
       quantity,
       transmission,
-      vehicleYear
+      vehicleYear,
+      highlight1,
+      highlight2
     } = this.state
     this.props.editCar(this.props.match.params.carId, {
       cylinderCount,
@@ -79,7 +83,9 @@ export class SingleCarView extends React.Component {
       price,
       quantity,
       transmission,
-      vehicleYear
+      vehicleYear,
+      highlight1,
+      highlight2
     })
     this.setState({showForm: false})
     this.props.fetchCar(this.props.match.params.carId)
@@ -100,7 +106,9 @@ export class SingleCarView extends React.Component {
       price,
       quantity,
       transmission,
-      vehicleYear
+      vehicleYear,
+      highlight1,
+      highlight2
     } = this.props.cars.SingleCar
     this.setState({
       cylinderCount,
@@ -115,7 +123,9 @@ export class SingleCarView extends React.Component {
       price,
       quantity,
       transmission,
-      vehicleYear
+      vehicleYear,
+      highlight1,
+      highlight2
     })
   }
 
@@ -140,7 +150,9 @@ export class SingleCarView extends React.Component {
           </a>
         </div>
         <div className="singleViewOverlay">
-          <div>{`${this.props.cars.SingleCar.make} ${this.props.cars.SingleCar.model}`}</div>
+          <div>{`${this.props.cars.SingleCar.make} ${
+            this.props.cars.SingleCar.model
+          }`}</div>
           <div>
             Price:
             <br />-{`${this.props.cars.SingleCar.price}`}-
@@ -189,8 +201,8 @@ export class SingleCarView extends React.Component {
           </div>
           <div className="highlightsTitle">Highlights</div>
           <div className="singleViewHighlights">
-            <div>Highlight 1</div>
-            <div>Highlight 2</div>
+            <div>{`${this.props.cars.SingleCar.highlight1}`}</div>
+            <div>{`${this.props.cars.SingleCar.highlight2}`}</div>
           </div>
           <div className="singleViewDetails">
             <div>
@@ -239,6 +251,8 @@ export class SingleCarView extends React.Component {
               quantity={this.state.quantity}
               transmission={this.state.transmission}
               vehicleYear={this.state.vehicleYear}
+              highlight1={this.state.highlight1}
+              highlight2={this.state.highlight2}
               mapInputToState={this.mapInputToState}
               handleSubmit={this.handleSubmit}
             />

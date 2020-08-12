@@ -19,7 +19,9 @@ export class AddCar extends React.Component {
       price: null,
       quantity: null,
       transmission: '',
-      vehicleYear: null
+      vehicleYear: null,
+      highlight1: '',
+      highlight2: ''
     }
     this.mapInputToState = this.mapInputToState.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -44,7 +46,9 @@ export class AddCar extends React.Component {
       price,
       quantity,
       transmission,
-      vehicleYear
+      vehicleYear,
+      highlight1,
+      highlight2
     } = this.state
     this.props.submitCar({
       cylinderCount,
@@ -59,19 +63,14 @@ export class AddCar extends React.Component {
       price,
       quantity,
       transmission,
-      vehicleYear
+      vehicleYear,
+      highlight1,
+      highlight2
     })
   }
 
   // eslint-disable-next-line complexity
   render() {
-    let userObject = this.props.reduxState.user.user
-    if (userObject === undefined || Object.keys(userObject).length === 0) {
-      userObject = 'none'
-    } else {
-      userObject = JSON.parse(this.props.reduxState.user.user)
-    }
-
     let {
       cylinderCount,
       drivetrain,
@@ -84,14 +83,17 @@ export class AddCar extends React.Component {
     return (
       <div>
         <div>
-          {userObject.firstName ? (
+          {this.props.reduxState.user.firstName ? (
             <div>
-              Welcome back, {userObject.firstName} {userObject.lastName} (
-              {userObject.email})
+              Welcome back, {this.props.reduxState.user.firstName}{' '}
+              {this.props.reduxState.user.lastName} (
+              {this.props.reduxState.user.email})
             </div>
           ) : (
             // we can display two different things depending on whether the user is logged in
-            <div>Need to log in</div>
+            <span style={{color: 'red'}}>
+              *need to log in as a user to add cars
+            </span>
           )}
         </div>
         <div className="addCarForm">
@@ -236,6 +238,12 @@ export class AddCar extends React.Component {
             <br />
             <label htmlFor="vehicleYear">Vehicle Year: </label>
             <input name="vehicleYear" onChange={this.mapInputToState} />
+            <br />
+            <label htmlFor="highlight1">Highlight 1: </label>
+            <input name="highlight1" onChange={this.mapInputToState} />
+            <br />
+            <label htmlFor="highlight2">Highlight 2: </label>
+            <input name="highlight2" onChange={this.mapInputToState} />
             <br />
 
             <button type="button" onClick={this.handleSubmit}>

@@ -4,6 +4,7 @@ const chalk = require('chalk')
 const db = require('../server/db')
 const {User, Car, Order, CarsAndOrders} = require('../server/db/models')
 const faker = require('faker')
+const {HotModuleReplacementPlugin} = require('webpack')
 
 async function seed() {
   await db.sync({force: true})
@@ -19,11 +20,22 @@ async function seed() {
     })
   }
 
+  await User.create({
+    firstName: 'Admin',
+    lastName: 'User',
+    password: 'txtz7pap3FmoHxn',
+    email: 'admin@email.com',
+    isAdmin: true,
+    image: faker.image.imageUrl()
+  })
+
   console.log(chalk.yellow(`seeded 101 users`))
   console.log(chalk.green(`seeded successfully`))
 
   const cars = await Promise.all([
     Car.create({
+      highlight1: '360-Degree Camera System',
+      highlight2: 'Evasive Steering',
       make: 'Honda',
       model: 'Civic Si Sedan',
       vehicleYear: 2020,
@@ -39,6 +51,8 @@ async function seed() {
       quantity: 2
     }),
     Car.create({
+      highlight1: 'Evasive Steering',
+      highlight2: 'Pre-Safe Nudging',
       make: 'Honda',
       model: 'Civic Si Coupe',
       vehicleYear: 2020,
@@ -54,6 +68,8 @@ async function seed() {
       quantity: 3
     }),
     Car.create({
+      highlight1: 'Pre-Safe Nudging',
+      highlight2: 'Launch Gear',
       make: 'Honda',
       model: 'Accord EX-L',
       vehicleYear: 2020,
@@ -69,6 +85,8 @@ async function seed() {
       quantity: 4
     }),
     Car.create({
+      highlight1: 'Launch Gear',
+      highlight2: 'Sound Enhancement',
       make: 'Honda',
       model: 'CR-V LX',
       vehicleYear: 2020,
@@ -85,6 +103,8 @@ async function seed() {
       quantity: 2
     }),
     Car.create({
+      highlight1: 'Sound Enhancement',
+      highlight2: 'Home Assist Device Connectivity',
       make: 'Toyota',
       model: 'Camry XSE V6',
       title: 'Toyota Camry XSE V6',
@@ -101,6 +121,8 @@ async function seed() {
       quantity: 8
     }),
     Car.create({
+      highlight1: 'Home Assist Device Connectivity',
+      highlight2: 'Smart Trailer Features',
       make: 'Lexus',
       model: 'IS 350 F Sport',
       vehicleYear: 2020,
@@ -116,6 +138,8 @@ async function seed() {
       quantity: 5
     }),
     Car.create({
+      highlight1: 'Smart Trailer Features',
+      highlight2: 'Track Pace',
       make: 'Lexus',
       model: 'RC 350 F Sport',
       vehicleYear: 2020,
@@ -131,6 +155,8 @@ async function seed() {
       quantity: 1
     }),
     Car.create({
+      highlight1: 'Track Pace',
+      highlight2: 'Smart Suspension',
       make: 'BMW',
       model: 'M3 Competition Pkg',
       vehicleYear: 2018,
@@ -146,6 +172,8 @@ async function seed() {
       quantity: 2
     }),
     Car.create({
+      highlight1: 'Smart Suspension',
+      highlight2: 'Head-Up Display',
       make: 'BMW',
       model: 'M2 Competition',
       vehicleYear: 2021,
@@ -161,6 +189,8 @@ async function seed() {
       quantity: 2
     }),
     Car.create({
+      highlight1: 'Head-Up Display',
+      highlight2: 'Keyless Entry',
       make: 'Mercedes',
       model: 'AMG C43 Coupe',
       vehicleYear: 2020,
@@ -176,6 +206,8 @@ async function seed() {
       quantity: 2
     }),
     Car.create({
+      highlight1: 'Keyless Entry',
+      highlight2: 'Power Tailgate',
       make: 'Mercedes',
       model: 'AMG C43 Sedan',
       vehicleYear: 2020,
@@ -191,6 +223,8 @@ async function seed() {
       quantity: 2
     }),
     Car.create({
+      highlight1: 'Power Tailgate',
+      highlight2: 'Fast USB Charging Outlets',
       make: 'Mercedes',
       model: 'AMG C63 Sedan',
       vehicleYear: 2020,
@@ -206,6 +240,8 @@ async function seed() {
       quantity: 3
     }),
     Car.create({
+      highlight1: 'Fast USB Charging Outlets',
+      highlight2: 'WiFi Hotspot',
       make: 'Mercedes',
       model: 'AMG C63 Coupe',
       vehicleYear: 2020,
@@ -221,6 +257,8 @@ async function seed() {
       quantity: 3
     }),
     Car.create({
+      highlight1: 'WiFi Hotspot',
+      highlight2: 'Rear Entertainment Systems',
       make: 'Subaru',
       model: 'WRX STI',
       vehicleYear: 2020,
@@ -236,6 +274,8 @@ async function seed() {
       quantity: 4
     }),
     Car.create({
+      highlight1: 'Rear Entertainment Systems',
+      highlight2: 'Auto-Dimming Mirrors',
       make: 'Subaru',
       model: 'WRX STI Limited',
       vehicleYear: 2020,
@@ -251,6 +291,8 @@ async function seed() {
       quantity: 4
     }),
     Car.create({
+      highlight1: 'Auto-Dimming Mirrors',
+      highlight2: 'Multizone Climate System',
       make: 'Honda',
       model: 'Civic Si Sedan',
       vehicleYear: 2020,
@@ -266,6 +308,8 @@ async function seed() {
       quantity: 2
     }),
     Car.create({
+      highlight1: 'Multizone Climate System',
+      highlight2: 'Heated Steering Wheel',
       make: 'Honda',
       model: 'Civic Si Coupe',
       vehicleYear: 2020,
@@ -281,6 +325,8 @@ async function seed() {
       quantity: 3
     }),
     Car.create({
+      highlight1: 'Heated Steering Wheel',
+      highlight2: 'Power Driver’s Seat With Adjustable Lumbar Support',
       make: 'Honda',
       model: 'Accord EX-L',
       vehicleYear: 2020,
@@ -296,6 +342,8 @@ async function seed() {
       quantity: 4
     }),
     Car.create({
+      highlight1: 'Power Driver’s Seat With Adjustable Lumbar Support',
+      highlight2: 'Blind Spot Alert',
       make: 'Honda',
       model: 'CR-V LX',
       vehicleYear: 2020,
@@ -311,6 +359,8 @@ async function seed() {
       quantity: 2
     }),
     Car.create({
+      highlight1: 'Blind Spot Alert',
+      highlight2: '360-Degree Camera System',
       make: 'Toyota',
       model: 'Camry XSE V6',
       vehicleYear: 2019,
@@ -326,6 +376,8 @@ async function seed() {
       quantity: 8
     }),
     Car.create({
+      highlight1: '360-Degree Camera System',
+      highlight2: 'Evasive Steering',
       make: 'Lexus',
       model: 'IS 350 F Sport',
       vehicleYear: 2020,
@@ -341,6 +393,8 @@ async function seed() {
       quantity: 5
     }),
     Car.create({
+      highlight1: 'Evasive Steering',
+      highlight2: 'Pre-Safe Nudging',
       make: 'Lexus',
       model: 'RC 350 F Sport',
       vehicleYear: 2020,
@@ -356,6 +410,8 @@ async function seed() {
       quantity: 1
     }),
     Car.create({
+      highlight1: 'Pre-Safe Nudging',
+      highlight2: 'Launch Gear',
       make: 'BMW',
       model: 'M3 Competition Pkg',
       vehicleYear: 2018,
@@ -371,6 +427,8 @@ async function seed() {
       quantity: 2
     }),
     Car.create({
+      highlight1: 'Launch Gear',
+      highlight2: 'Sound Enhancement',
       make: 'BMW',
       model: 'M2 Competition',
       vehicleYear: 2021,
@@ -386,6 +444,8 @@ async function seed() {
       quantity: 2
     }),
     Car.create({
+      highlight1: 'Sound Enhancement',
+      highlight2: 'Home Assist Device Connectivity',
       make: 'Mercedes',
       model: 'AMG C43 Coupe',
       vehicleYear: 2020,
@@ -401,6 +461,8 @@ async function seed() {
       quantity: 2
     }),
     Car.create({
+      highlight1: 'Home Assist Device Connectivity',
+      highlight2: 'Smart Trailer Features',
       make: 'Mercedes',
       model: 'AMG C43 Sedan',
       vehicleYear: 2020,
@@ -416,6 +478,8 @@ async function seed() {
       quantity: 2
     }),
     Car.create({
+      highlight1: 'Smart Trailer Features',
+      highlight2: 'Track Pace',
       make: 'Mercedes',
       model: 'AMG C63 Sedan',
       vehicleYear: 2020,
@@ -431,6 +495,8 @@ async function seed() {
       quantity: 3
     }),
     Car.create({
+      highlight1: 'Track Pace',
+      highlight2: 'Smart Suspension',
       make: 'Mercedes',
       model: 'AMG C63 Coupe',
       vehicleYear: 2020,
@@ -446,6 +512,8 @@ async function seed() {
       quantity: 3
     }),
     Car.create({
+      highlight1: 'Smart Suspension',
+      highlight2: 'Head-Up Display',
       make: 'Subaru',
       model: 'WRX STI',
       vehicleYear: 2020,
@@ -461,6 +529,8 @@ async function seed() {
       quantity: 4
     }),
     Car.create({
+      highlight1: 'Head-Up Display',
+      highlight2: 'Keyless Entry',
       make: 'Subaru',
       model: 'WRX STI Limited',
       vehicleYear: 2020,
