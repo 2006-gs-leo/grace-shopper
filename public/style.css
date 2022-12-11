@@ -509,7 +509,7 @@ form div {
   cursor: pointer;
   padding: 0.5em 1em;
   width: 50%;
-  singlesingleletter-spacing: 0.15em;
+  /* singlesingleletter-spacing: 0.15em; */
   font-weight: bolder;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -543,7 +543,7 @@ form div {
   cursor: pointer;
   padding: 0.5em 1em;
   width: 90%;
-  singlesingleletter-spacing: 0.15em;
+  /* singlesingleletter-spacing: 0.15em; */
   font-weight: bolder;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
