@@ -24,7 +24,7 @@ class AboutUs extends React.Component {
           )}
 
           <div>
-            <div className="imageBehindTextContact">Support {`&`} Contact</div>
+            <div className="imageBehindTextContact">Support & Contact</div>
             <br />
             <br />
 
